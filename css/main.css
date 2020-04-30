@@ -1210,6 +1210,14 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 	letter-spacing: .4rem;
 }
 
+.section-intro #intro-comment {
+	font-family: "poppins-regular", serif;
+	font-size: 1rem;
+	color: #313131;
+	line-height: 1.25;
+	margin-bottom: 1.2rem;
+}
+
 /**
  * responsive:
  * common styles
@@ -1275,6 +1283,29 @@ header .logo {
 	margin-left: 20px;
 	margin-right: 50px;
 	margin-top: 25px;
+	position: relative;
+}
+
+header .language-bar {
+	display: block;
+	background:rgba(252, 181, 3, 0.3);
+	color: #000;
+	font-family: "poppins-regular", sans-serif;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	/* min-width: 220px;*/
+	/* min-height: 66px;  */
+	position: absolute;
+	right: 90px;
+	top: 0;
+}
+
+header #language {
+	float: right;
+	margin-right: 10px;
+	margin-left: 10px;
+	margin-top: 5px;
 	position: relative;
 }
 
