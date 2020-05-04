@@ -1288,7 +1288,7 @@ header .logo {
 
 header .language-bar {
 	display: block;
-	background:rgba(252, 181, 3, 0.3);
+	background: rgba(252, 181, 3, 0.3);
 	color: #000;
 	font-family: "poppins-regular", sans-serif;
 	margin: 0;
@@ -1297,7 +1297,7 @@ header .language-bar {
 	/* min-width: 220px;*/
 	/* min-height: 66px;  */
 	position: absolute;
-	right: 90px;
+	right: 20px;
 	top: 0;
 }
 
@@ -1617,7 +1617,7 @@ header .logo a {
 
 .intro-content .button::after {
 	display: inline-block;
-	content: "\f105"; 
+	content: "\f105";
 	font-family: fontAwesome;
 	font-size: 1.6rem;
 	line-height: inherit;
@@ -1627,7 +1627,7 @@ header .logo a {
 }
 
 #moreabout::after {
-	content: "\f107"; 
+	content: "\f107";
 }
 
 .intro-social {
@@ -2557,7 +2557,6 @@ header .logo a {
 	text-align: left;
 }
 
-
 /**
  * responsive:
  * stats
@@ -2994,4 +2993,32 @@ footer .copyright span:last-child::after {
 	background: #000000;
 }
 
+.blog-image {
+	margin: 0;
+	padding: 0;
+}
+
+/* Position child elements relative to this element */
+.aspect-ratio-box {
+	position: relative;
+}
+
+/* Create a pseudo element that uses padding-bottom to take up space */
+.aspect-ratio-box::after {
+    display: block;
+    content: '';
+    /* 16:9 aspect ratio */
+	padding-bottom: 56.25%;
+	margin-bottom: 2%;
+}
+
+/* Image is positioned absolutely relative to the parent element */
+.aspect-ratio-box img {
+    /* Image should match parent box size */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
 /*# sourceMappingURL=main.css.map */
