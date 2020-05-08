@@ -238,7 +238,7 @@ const languageDictionary = {
         'about-company-websites': 'Sites da Companhia',
         'about-hbsis-publication': 'Publicação da HBSIS Ambev no Linkedin',
         'about-skills': 'Conhecimentos em destaque',
-        'about-industrial-automation': 'Automação Industrial',
+        'about-industrialautomation': 'Automação Industrial',
         'about-plc': 'CLP (Rexroth, Siemens, Rockewell)',
         'about-hmi': 'IHM (Allan Bradley, Siemens)',
         'about-electrical': 'Projetos Elétricos',
@@ -281,11 +281,11 @@ const languageDictionary = {
                         Sistemas de Business Intelligence e Analytics.
                         Desenvolvimento de softwares e apps, implantação de sistemas e arquitetura de sistemas, assim como desenvolvimento de APIs para integração destes sistemas.
                         Gerenciamento de projetos (Sistemas e equipamentos).`,
-        'resume-boshrole':'Desenvolvedor (Automação Industrial)/ Projetista Eletricista',
+        'resume-boshrole':'Desenvolvedor (Automação Industrial)<br>Projetista Eletricista',
         'resume-boshdate':'Jun 2012 – Set 2014',
         'resume-bosh':  `Desenvolvimento de softwares de Automação, projeto elétrico, comissionamento de equipamentos, desenvolvimento de software.
                         Configuradores de produtos com Excel + VBA, Adobe Live Cycle (Formulários Dinâmicos em PDF com javascript), e C#.`,
-        'resume-ttmrole':'Industrial Automation Designer & Team Leader',
+        'resume-ttmrole':'Desenvolvedor (Automação Industrial)<br>Lider de time',
         'resume-ttmdate':'May 2009 – Jun 2012',
         'resume-ttm':   `Desenvolvimento de softwares de Automação, projeto elétrico, comissionamento de equipamentos, desenvolvimento de software.
                         Principalmente para Bosch Rexroth (outsourcing). Mas também tivemos grande projetos com a Lavrita
