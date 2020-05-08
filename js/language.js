@@ -249,7 +249,7 @@ const languageDictionary = {
         'about-flutter': 'Flutter,<br>Ambiente Linux',
         'about-native': 'IOS Nativo,<br>Android Nativo',
         'about-virtualization': 'Virtualização,<br>Containers',
-        'about-microcontrollers': 'Microcontroladores, Electronica',
+        'about-microcontrollers': 'Microcontroladores, Eletrônica',
         'about-atmega': 'ATMega, ESP8266, ESP32',
         'about-electronics': 'Projetos de Eletrônica,<br>Prototipação, PCB, esquemáticos',
         'about-sensors': 'Sensores, Protocolos IoT,<br>Projeto de equipamentos',
@@ -347,8 +347,8 @@ const languageDictionary = {
         'publications-subtitle': 'Artigos e Tutoriais',
         'lectures-subtitle': 'Talks Técnicas',
         'portfolio-subtitle':   'Ilustração, Animação, e 3D',
-        'portfolio-message':    `Estas artes são de freelance ou apenas hobbie.<br>
-                                <small>Eu não pude publicar diversas artes pois foram adquiridas com direito de imagem.</small>`,
+        'portfolio-message':    `Artes para trabalho freelance ou apenas por diversão.<br>
+                                <small>Eu não publiquei diversas artes aqui, pois foram adquiridas com direito de imagem.</small>`,
         'music-subtitle':   'Composição própria',
         'music-message':    'Tocar violão, cantar, compor, fazer o arranjo e mixar as trilhas no Garage Band é uma das minhas grandes paixões!',
         'coworkers-subtitle':   'Colegas de trabalho',
