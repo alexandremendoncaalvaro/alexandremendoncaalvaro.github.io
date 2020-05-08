@@ -211,22 +211,17 @@ const languageDictionary = {
         'intro-more': 'Mais sobre mim',
         'about-intro-title': 'Deixa eu me apresentar.',
         'about-intro': `Sou um cara que adora aprender. Independente de ser sobre humanas ou exatas.
-                        <br>Minha maior experiência é com o desenvolvimento e integração de softwares e equipamentos de 
-                        automação industrial de alta tecnologia, aplicativos e sistemas.
-                        Onde aprendi a lidar com projetos, metas, prazos, redução de custos, trabalho em equipe e lucratividade.
-                        Possuo também grande experiência em criação de interfaces gráficas e ilustrações digitais, 
-                        utilizadas em websites, aplicativos, IHMs e Sistemas supervisórios de alto padrão.
-                        <br>Durante este período pude atuar nas áreas gráficas, elétrica, eletrônica e programação,
-                        alternando entre estas áreas ou combinando-as em sistemas para web, apps, desenvolvimento de equipamentos,
-                        interfaces gráficas e outros.
-                        <br>Tenho excelente domínio em informática, projetos, desenhos técnicos e grande experiência prática com elétrica,
-                        hidráulica, pneumática, instrumentação, comissionamento e startup de equipamentos industriais.`,
+                        <br>Minha maior experiência profissional é com projeto e desenvolvimento de equipamentos de automação industrial
+                        e software embarcado (CLP e desenvolvimento de firmware para microcontroladores).
+                        <br>Possuo também grande experiência em criação de interfaces gráficas, modelagem 3D, ilustração, e
+                        pintura digital.
+                        <br>Durante minha carreira pude aprender bastante sobre elétrica, eletrônica, hidraulica, pneumatica,
+                        desenvolvimento de software, comissionamento e startup de equipamentos industriais.`,
         'about-profile-title': 'PERFIL',
         'about-profile': `<i>I’m here for innovation, tech & beer!</i><br>Tenho muito orgulho de trabalhar na <a
                         href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a>, empresa do grupo
                         <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a>.
-                        <br>Eu atuo como pesquisador de tecnologia e inovação no LAHBS, o departamento de P&D da <a
-                        href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a>.<br>
+                        <br>Eu atuo como pesquisador de tecnologia e inovação no LAHBS, o departamento de P&D da empresa.<br>
                         Sou apaixonado por misturar disciplinas de tecnologia e arte, como Motion Graphics, animações SVG,
                         criação de música com meu violão e o GarageBand, desenvolvimento de algoritmos de visão computacional, entre outros.`,
         'about-fullname-title': 'NOME',
@@ -238,7 +233,7 @@ const languageDictionary = {
         'about-company-websites': 'Sites da Companhia',
         'about-hbsis-publication': 'Publicação da HBSIS Ambev no Linkedin',
         'about-skills': 'Conhecimentos em destaque',
-        'about-industrial-automation': 'Automação Industrial',
+        'about-industrialautomation': 'Automação Industrial',
         'about-plc': 'CLP (Rexroth, Siemens, Rockewell)',
         'about-hmi': 'IHM (Allan Bradley, Siemens)',
         'about-electrical': 'Projetos Elétricos',
@@ -248,7 +243,7 @@ const languageDictionary = {
         'about-softwaredevelopment': 'Desenvolvimento de Software, TI',
         'about-c': 'C/ C++ (microcontroladores)',
         'about-vba': 'VBA (Excel), Google Sheets Script',
-        'about-python': 'Python, SVG animation',
+        'about-python': 'Python, animações SVG',
         'about-csharp': 'C#, SQL, COBOL, Pascal',
         'about-html': 'HTML, JS, CSS',
         'about-flutter': 'Flutter,<br>Ambiente Linux',
