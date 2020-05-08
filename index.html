@@ -57,36 +57,39 @@
 
 				<nav id="main-nav-wrap">
 					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll" href="#intro" title="">
+						<li class="current"><a class="smoothscroll" href="#intro">
 								<lng menu-intro /></a></li>
-						<li><a class="smoothscroll" href="#about" title="">
+						<li><a class="smoothscroll" href="#about">
 								<lng menu-about /></a></li>
-						<li><a class="smoothscroll" href="#resume" title="">
+						<li><a class="smoothscroll" href="#resume">
 								<lng menu-resume /></a></li>
-						<li><a class="smoothscroll" href="#projects" title="">
+						<li><a class="smoothscroll" href="#projects">
 								<lng menu-projects /></a></li>
-						<li><a class="smoothscroll" href="#opensource" title="">
+						<li><a class="smoothscroll" href="#opensource">
 								<lng menu-opensource /></a></li>
-						<li><a class="smoothscroll" href="#publications" title="">
+						<li><a class="smoothscroll" href="#publications">
 								<lng menu-publications /></a></li>
-						<li><a class="smoothscroll" href="#lectures" title="">
+						<li><a class="smoothscroll" href="#lectures">
 								<lng menu-lectures /></a></li>
-						<li><a class="smoothscroll" href="#portfolio" title="">
+						<li><a class="smoothscroll" href="#portfolio">
 								<lng menu-portfolio /></a></li>
-						<li><a class="smoothscroll" href="#music" title="">
+						<li><a class="smoothscroll" href="#music">
 								<lng menu-music /></a></li>
-						<li><a class="smoothscroll" href="#coworkers" title="">
+						<li><a class="smoothscroll" href="#coworkers">
 								<lng menu-coworkers /></a></li>
-						<li><a class="smoothscroll" href="#contact" title="">
+						<li><a class="smoothscroll" href="#stats">
+								<lng menu-languages /></a></li>
+						<li><a class="smoothscroll" href="#contact">
 								<lng menu-contact /></a></li>
 					</ul>
 				</nav>
 			</div> <!-- /top-bar -->
 
 			<div class="language-bar">
-				<div id="language">
-					PT-BR (breve)
-					<!-- <a href="?language=en" title="">EN</a> | <a href="?language=br" title="">BR</a> -->
+				<div id="language" style="text-transform: uppercase;">
+					<!-- PT-BR (breve) -->
+					<a id='language-link' href="javascript: changeLanguage()">
+						<lng changelanguage /></a>
 				</div>
 			</div> <!-- /language-bar -->
 
@@ -125,9 +128,9 @@
 						<lng intro-comment />
 					</p>
 
-					<a id="moreabout" class="button stroke smoothscroll" href="#about" title="">
+					<a id="moreabout" class="button stroke smoothscroll" href="#about">
 						<lng intro-more /></a>
-					<a id="blog" class="button stroke" href="/blog" title="" target="_blank">BLOG</a>
+					<a id="blog" class="button stroke" href="/blog" target="_blank">BLOG</a>
 
 				</div>
 			</div>
@@ -226,7 +229,7 @@
 				</h3>
 
 				<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6641363879395893248" height="900"
-					width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
+					width="100%" frameborder="0" allowfullscreen=""></iframe>
 				<img src="https://raw.githubusercontent.com/alexandremendoncaalvaro/alexandremendoncaalvaro.github.io/master/images/illustrations/ddaiykb-0b288467-eb80-4a8a-a69b-965b4dcaf4ae.gif"
 					width="100%" alt="">
 
@@ -238,7 +241,7 @@
 					<lng about-skills />
 				</h3>
 				<strong>
-					<lng about-industrial-automation /></strong>
+					<lng about-industrialautomation /></strong>
 				<ul class="skill-bars">
 					<li>
 						<div class="progress percent90"><span></span></div>
@@ -279,99 +282,121 @@
 							<lng about-field /></strong>
 					</li>
 				</ul>
-				<strong>Software Development, I.T.</strong>
+				<strong>
+					<lng about-softwaredevelopment /></strong>
 				<ul class="skill-bars">
 					<li>
 						<div class="progress percent80"><span></span></div>
-						<strong>C/ C++ (microcontrollers)</strong>
+						<strong>
+							<lng about-c /></strong>
 					</li>
 					<li>
 						<div class="progress percent90"><span></span></div>
-						<strong>VBA (Excel), Google Sheets Script</strong>
+						<strong>
+							<lng about-vba /></strong>
 					</li>
 					<li>
 						<div class="progress percent70"><span></span></div>
-						<strong>Python, SVG animation</strong>
+						<strong>
+							<lng about-python /></strong>
 					</li>
 					<li>
 						<div class="progress percent60"><span></span></div>
-						<strong>C#, SQL, COBOL, Pascal</strong>
+						<strong>
+							<lng about-csharp /></strong>
 					</li>
 					<li>
 						<div class="progress percent80"><span></span></div>
-						<strong>HTML, JS, CSS</strong>
+						<strong>
+							<lng about-html /></strong>
 					</li>
 					<li>
 						<div class="progress percent50"><span></span></div>
-						<strong>Flutter,<br>Linux Enviroment</strong>
+						<strong>
+							<lng about-flutter /></strong>
 					</li>
 					<li>
 						<div class="progress percent30"><span></span></div>
-						<strong>Native IOS,<br>Native Android</strong>
+						<strong>
+							<lng about-native /></strong>
 					</li>
 					<li>
 						<div class="progress percent60"><span></span></div>
-						<strong>Virtualization,<br>Containers</strong>
+						<strong>
+							<lng about-virtualization /></strong>
 					</li>
 				</ul>
-				<strong>Microcontroller, Electronics</strong>
+				<strong>
+					<lng about-microcontrollers /></strong>
 				<ul class="skill-bars">
 					<li>
 						<div class="progress percent90"><span></span></div>
-						<strong>ATMega, ESP8266, ESP32</strong>
+						<strong>
+							<lng about-atmega /></strong>
 					</li>
 					<li>
 						<div class="progress percent70"><span></span></div>
-						<strong>Electronics Design,<br>Prototyping, PCB, Schematics</strong>
+						<strong>
+							<lng about-electronics /></strong>
 					</li>
 					<li>
 						<div class="progress percent80"><span></span></div>
-						<strong>Sensors, IoT Protocols,<br>Equipment Design</strong>
+						<strong>
+							<lng about-sensors /></strong>
 					</li>
 				</ul>
-				<strong>Graphic Design, 3D Modeling and Illustration </strong>
+				<strong>
+					<lng about-graphicdesign /></strong>
 				<ul class="skill-bars">
 					<li>
 						<div class="progress percent80"><span></span></div>
-						<strong>Illustration, Digital Paint </strong>
+						<strong>
+							<lng about-illustration /></strong>
 					</li>
 					<li>
 						<div class="progress percent90"><span></span></div>
-						<strong>Adobe Photoshop, Illustrator</strong>
+						<strong>
+							<lng about-adobephotoshop /></strong>
 					</li>
 					<li>
 						<div class="progress percent70"><span></span></div>
-						<strong>Adobe After Effects, Premiere</strong>
+						<strong>
+							<lng about-adobeafter /></strong>
 					</li>
 					<li>
 						<div class="progress percent65"><span></span></div>
-						<strong>Cinema 4D, 3D Studio Max</strong>
+						<strong>
+							<lng about-cinema4d /></strong>
 					</li>
 				</ul>
 
-				<strong>Personal</strong>
+				<strong>
+					<lng about-personal /></strong>
 				<ul class="skill-bars">
 					<li>
 						<div class="progress percent5"><span></span></div>
-						<strong>Recent Memory</strong>
+						<strong>
+							<lng about-recentmemory /></strong>
 					</li>
 					<li>
 						<div class="progress percent95"><span></span></div>
-						<strong>Long Term Memory</strong>
+						<strong>
+							<lng about-longtermmemory /></strong>
 					</li>
 				</ul>
-				<p>Creative, Team Worker, Focused, Communicative, Proactive, Study enthusiast, Fast learner,
-					Self-taught, Good listener and with Natural Leadership.</p>
+				<p>
+					<lng about-andmore />
+				</p>
 			</div>
 
 		</div>
 
 		<div class="row button-section">
 			<div class="col-twelve">
-				<a href="#contact" title="Would you like a lecture?" class="button stroke smoothscroll">looking for a
-					lecture?</a>
+				<a href="#contact" class="button stroke smoothscroll">
+					<lng about-lecture /></a>
 				<a href="https://drive.google.com/file/d/1sFKQEJKvNjN6PSg8tQe9FkuR0mhvL4Nn/view?usp=sharing"
-					target="_blank" title="Download CV" class="button button-primary">Download CV</a>
+					target="_blank" class="button button-primary">Download CV</a>
 			</div>
 		</div>
 
@@ -385,9 +410,11 @@
 		<div class="row section-intro">
 			<div class="col-twelve">
 				<h5>
-					<lng menu-resume></span>
+					<lng menu-resume /></span>
 				</h5>
-				<h1>Work Experience</h1>
+				<h1>
+					<lng resume-workexperience />
+				</h1>
 			</div>
 		</div> <!-- /section-intro-->
 
@@ -407,19 +434,19 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3>Researcher</h3>
-							<p>Jun 2016 - Present</p>
+							<h3>
+								<lng resume-hbsisrole />
+							</h3>
+							<p>
+								<lng resume-hbsisdate />
+							</p>
 						</div>
 
 						<div class="timeline-content">
 							<h3><a href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a></h3>
 							<h4>Blumenau, SC</h4>
 							<p>
-								Researcher at LAHBS, the R&D + Innovation department of HBSIS Ambev. Especialized in
-								Internet of Things and Industrial Automation.
-								Applied research with prototyping and Proof of Concept (PoC).
-								Spread of innovation and intra-empreneurship suport between programs for all the
-								company.
+								<lng resume-hbsis />
 							</p>
 						</div>
 
@@ -434,16 +461,20 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3>Automation Developer</h3>
-							<p>Oct 2014 - Jun 2016</p>
+							<h3>
+								<lng resume-tmgrole />
+							</h3>
+							<p>
+								<lng resume-tmgdate />
+							</p>
 						</div>
 
 						<div class="timeline-content">
 							<h3><a href="http://www.tmg.agr.br/" target="_blank">TMG</a></h3>
 							<h4>Londrina, PR</h4>
-							<p>Concept, design, prototyping, software and hardware development of full automation
-								equipment.
-								Hardware and Software projects management.</p>
+							<p>
+								<lng resume-tmg />
+							</p>
 						</div>
 
 					</div> <!-- /timeline-block -->
@@ -457,18 +488,19 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3>Industrial Automation & Electrical Designer</h3>
-							<p>Jun 2012 – Sep 2014</p>
+							<h3>
+								<lng resume-boshrole />
+							</h3>
+							<p>
+								<lng resume-boshdate />
+							</p>
 						</div>
 
 						<div class="timeline-content">
 							<h3><a href="https://www.boschrexroth.com/" target="_blank">Bosh Rexroth</a></h3>
 							<h4>Pomerode, SC</h4>
 							<p>
-								Automation software engineering, electrical design, equipment commissioning, software
-								development.
-								Product Configurators with Excel + VBA, Adobe Live Cycle (Dynamic PDF Forms with
-								javascript), and C#.
+								<lng resume-bosh />
 							</p>
 						</div>
 
@@ -481,18 +513,19 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3>Industrial Automation Designer & Team Leader</h3>
-							<p>May 2009 – Jun 2012</p>
+							<h3>
+								<lng resume-ttmrole />
+							</h3>
+							<p>
+								<lng resume-ttmdate />
+							</p>
 						</div>
 
 						<div class="timeline-content">
 							<h3>TTM Automação</h3>
 							<h4>Mauá, SP</h4>
 							<p>
-								Automation software engineering, electrical design, equipment commissioning, software
-								development.
-								Mainly for Bosch Rexroth (outsourcing). But we had big projects with Lavrita
-								Engenharia, Sulser (Frio Brasil), and others significant players.
+								<lng resume-ttm />
 							</p>
 						</div>
 
@@ -507,15 +540,19 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3>Industrial Automation Software Developer</h3>
-							<p>Apr 2007 – May 2009</p>
+							<h3>
+								<lng resume-mayekawarole />
+							</h3>
+							<p>
+								<lng resume-date />
+							</p>
 						</div>
 
 						<div class="timeline-content">
 							<h3><a href="http://mayekawa.com.br/" target="_blank">Mayekawa</a></h3>
 							<h4>Arujá, SP</h4>
 							<p>
-								Automation software engineering, PLC, HMI, and SCADA supervisory development.
+								<lng resume-mayekawa />
 							</p>
 						</div>
 
@@ -530,8 +567,12 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3>Graphic designer & Sales customer service</h3>
-							<p>2005 – 2007</p>
+							<h3>
+								<lng resume-colorrole />
+							</h3>
+							<p>
+								<lng resume-colordate />
+							</p>
 						</div>
 
 						<div class="timeline-content">
@@ -540,10 +581,7 @@
 							<h4>Florianópolis, SC</h4>
 
 							<p>
-								Image manipulation, graphic design, algorithms development and customer service at
-								Photograph Store.
-								I could experience and learn a lot about photograph, studio illumination and
-								photographic film processing.
+								<lng resume-color />
 							</p>
 						</div>
 
@@ -556,21 +594,19 @@
 						</div>
 
 						<div class="timeline-header">
-							<h3>Aprendice: Graphic design, Illustration, Electronics and Software Development</h3>
-							<p>90´s – 2005</p>
+							<h3>
+								<lng resume-freelancerole />
+							</h3>
+							<p>
+								<lng resume-freelancedate />
+							</p>
 						</div>
 
 						<div class="timeline-content">
 							<h3>Freelancer</h3>
 							<h4>Florianópolis, SC & Sombrio, SC</h4>
 							<p>
-								My first jod was a Cat's food Catalog in Corel Draw 5 (90's ending).
-								Since then, I started to create things like MODS (modifications) for games like GTA 1
-								and 2, Unreal Tournament, Age of Empires and Warcraft, and learned about algorithms,
-								image manipulation and animations.
-								In the process I worked for some small companies as technician, sales or instructor,
-								where I could experience and learn about electronics, computer hardware, plotter
-								printing, store facade adhesive application.
+								<lng resume-freelance />
 							</p>
 						</div>
 
@@ -590,8 +626,12 @@
 	<section id="projects" class="highlights white-section">
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<h5>Projetcs</h5>
-				<h1>Highlights</h1>
+				<h5>
+					<lng menu-projects />
+				</h5>
+				<h1>
+					<lng projects-highlights />
+				</h1>
 			</div>
 		</div> <!-- /section-intro-->
 
@@ -601,7 +641,7 @@
 				<div class="col-four tab-full">
 					<h3>
 						<a href="http://lavrita.com.br/equipamentos/combate-a-incendio-aeroporto" target="_blank">
-							Infraero's Fire<br>fight truck
+							<lng projects-infraerotitle />
 						</a>
 					</h3>
 					<div class="fluid-video-wrapper">
@@ -610,8 +650,7 @@
 							allowfullscreen></iframe>
 					</div>
 					<p>
-						<strong>Software development of the automation system</strong><br>
-						This truck is used as the first response in a fire emergency at airports all over the country
+						<lng projects-infraero />
 					</p>
 				</div> <!-- project -->
 
@@ -619,14 +658,12 @@
 					<h3>
 						<a href="https://www.aysa.com.ar/Que-Hacemos/Plan-de-obras/Grandes-Obras/Sistema-Berazategui/sistema_berazategui"
 							target="_blank">
-							Buenos Aires sanitary<br>treatment system</a>
+							<lng projects-buenostitle />
 						</a>
 					</h3>
 					<p><img src="images/portfolio/berazategui.png"></p>
 					<p>
-						<strong>Software development for sluices automation</strong><br>
-						The Berazategui plant is responsible for the sanitary treatment of the sewer system in Buenos
-						Aires, Argentina
+						<lng projects-buenos />
 					</p>
 				</div> <!-- project -->
 
@@ -634,7 +671,7 @@
 					<h3>
 						<a href="https://petrobras.com.br/fatos-e-dados/maior-plataforma-semissubmersivel-construida-no-brasil-esta-em-operacao-na-bacia-de-campos.htm"
 							target="_blank">
-							P55 offshore<br>oil platform
+							<lng projects-p55title />
 						</a>
 					</h3>
 					<div class="fluid-video-wrapper">
@@ -644,9 +681,7 @@
 					</div>
 
 					<p>
-						<strong>Automation software development and electrical design suport</strong><br>
-						Hydraulic Power Unit for subsea manifolds and controls for its Roncador Module III project. P55
-						offshore oil platform from Petrobras.
+						<lng projects-p55 />
 					</p>
 				</div> <!-- project -->
 			</div>
@@ -655,19 +690,13 @@
 			<div class="col-twelve">
 				<h1>• • •</h1>
 				<p class="lead">
-					A Lot of sluices automation for Hydroelectric plants all over the country;
+					<lng projects-others />
 				</p>
 				<p class="lead">
-					Automation software for Chiller Systems - Colgate Palmolive, Itaú-Unibanco, Coca-Cola,
-					AB-InBev, etc;
+					<span><lng moreat /></span>
+					<a href="https://www.linkedin.com/in/alexandre-mendon%C3%A7a-%C3%A1lvaro-273b0050"
+						target="_blank"><i class="fa fa-linkedin"></i> Linkedin</a>
 				</p>
-				<p class="lead">
-					Factory Automation - Votorantim, Arcelor Mittal, ThyssenKrupp, ETH Dedini, Sanofi-Aventis,
-					Usiminas, etc.;<br>
-				</p>
-				<p class="lead">more at <a
-						href="https://www.linkedin.com/in/alexandre-mendon%C3%A7a-%C3%A1lvaro-273b0050"
-						target="_blank"><i class="fa fa-linkedin"></i> Linkedin</a></p>
 			</div>
 		</div> <!-- /section-intro-->
 
@@ -678,126 +707,127 @@
 	<section id="opensource" class="highlights grey-section">
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<h5>Projetcs</h5>
-				<h1>Open Source</h1>
+				<h5>
+					<lng menu-opensource />
+				</h5>
+				<h1>
+					<lng opensource-projects />
+				</h1>
 			</div>
 		</div> <!-- /section-intro-->
 		<div class="row portfolio-content">
 			<div class="col-twelve">
 				<div class="col-twelve tab-full opensource-pub">
-					<div class="fluid-video-wrapper">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/fxy134fVO1c" frameborder="0"
-							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen></iframe>
-					</div>
 					<h3>
 						<a href="https://github.com/alexandremendoncaalvaro/face-access" target="_blank">
 							Face Access
 						</a>
 					</h3>
-					<p>
-						Full source code and instructions to make an access control (Arduino controled) with face
-						recognition (On PC)
-						<ul>
-							<li>Multi Platform</li>
-							<li>MIT License</li>
-							<li>LGPDP Brasil Safe (Lei Geral de Proteção de Dados Pessoais)</li>
-						</ul>
-					</p>
-
-				</div> <!-- project -->
-
-				<div class="col-twelve tab-full opensource-pub">
 					<div class="fluid-video-wrapper">
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/9q9Jo4uhZhU" frameborder="0"
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/fxy134fVO1c" frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 							allowfullscreen></iframe>
 					</div>
+					<a href="https://github.com/alexandremendoncaalvaro/face-access" target="_blank">
+						https://github.com/alexandremendoncaalvaro/face-access
+					</a>
+					<p>
+						<lng opensource-face />
+					</p>
+					<hr>
+				</div> <!-- project -->
+
+				<div class="col-twelve tab-full opensource-pub">
 					<h3>
 						<a href="https://github.com/alexandremendoncaalvaro/Alfred" target="_blank">
 							Alfred Frontend
 						</a>
 					</h3>
+					<div class="fluid-video-wrapper">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/9q9Jo4uhZhU" frameborder="0"
+							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen></iframe>
+					</div>
+					<a href="https://github.com/alexandremendoncaalvaro/Alfred" target="_blank">
+						https://github.com/alexandremendoncaalvaro/Alfred
+					</a>
 					<p>
-						Internal use (our company team) SQL Editor tool with a fully animated interface. This validates
-						the SQL scripts to avoid mistakes when interact direct in homologation database (for obvious
-						reasons, some functions and backend are not included here).
-
-						<br>*Except the first batman (that we downloaded) all characters are originally drawn in
-						Illustrator, and animation with Greensock JS lib.
-
-						<br>Live demo:
+						<lng opensource-alfred />
 						<br><a href="https://alexandremendoncaalvaro.github.io/Alfred"
 							target="_blank">https://alexandremendoncaalvaro.github.io/Alfred</a>
-
-
 					</p>
-
+					<hr>
 				</div> <!-- project -->
 
 				<div class="col-six tab-full opensource-pub">
+					<h3>
+						<a href="https://github.com/alexandremendoncaalvaro/oraculo" target="_blank">Oraculo - Meeting
+							Room Scheduling</a>
+					</h3>
 					<div class="fluid-video-wrapper">
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/doKI5ksDAp8" frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 							allowfullscreen></iframe>
 					</div>
-					<h3>
-						<a href="https://github.com/alexandremendoncaalvaro/oraculo" target="_blank">Oraculo - Meeting
-							Room Scheduling</a>
-					</h3>
+					<a href="https://github.com/alexandremendoncaalvaro/oraculo" target="_blank">
+						https://github.com/alexandremendoncaalvaro/oraculo</a>
 					<p>
-						Oraculo is a flutter application that visualizes meeting room availability. It works using
-						Microsoft Graph API with Oauth2.0 to get the room list and schedule information.
+						<lng opensource-oraculo />
 					</p>
 
 				</div> <!-- project -->
 
 				<div class="col-six tab-full opensource-pub">
+					<h3>
+						<a href="https://github.com/alexandremendoncaalvaro/draw-size" target="_blank">
+							Draw Size
+						</a>
+					</h3>
 					<div class="fluid-video-wrapper">
 						<iframe width="560" height="315" src="https://www.youtube.com/embed/EiYgrgFEwIc" frameborder="0"
 							allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 							allowfullscreen></iframe>
 					</div>
-					<h3>
-						<a href="https://github.com/alexandremendoncaalvaro/draw-size" target="_blank">
-							Draw Size estimation
-						</a>
-					</h3>
+					<a href="https://github.com/alexandremendoncaalvaro/draw-size" target="_blank">
+						https://github.com/alexandremendoncaalvaro/draw-size
+					</a>
 					<p>
-						Basic example of real time size estimation from camera with with OpenCV
-						<br>The first-left object width is the reference for measurement
-						<ul>
-							<li>Multi Platform</li>
-							<li>MIT License</li>
-							<li>Required Python 3.6+</li>
-						</ul>
+						<lng opensource-drawsize />
 					</p>
 
 				</div> <!-- project -->
 
 				<div class="col-six tab-full opensource-pub">
-					<img width="100%" alt="" src="images/opensource-covers/ESP32-dual-core.jpg">
+					<hr>
 					<h3>
 						<a href="https://github.com/alexandremendoncaalvaro/esp32-dualcore-example" target="_blank">
-							ESP32 Dual Core Example
+							ESP32 Dual Core
 						</a>
 					</h3>
+					<img width="100%" alt="" src="images/opensource-covers/ESP32-dual-core.jpg">
+					<a href="https://github.com/alexandremendoncaalvaro/esp32-dualcore-example" target="_blank">
+						https://github.com/alexandremendoncaalvaro/esp32-dualcore-example
+					</a>
 					<p>
-						Esp32 with simple dual core demonstration
+						<lng opensource-esp32 />
 					</p>
 
 				</div> <!-- project -->
 
 				<div class="col-six tab-full opensource-pub">
-					<img width="100%" alt="" src="images/opensource-covers/qemu.jpg">
+					<hr>
 					<h3>
 						<a href="https://github.com/alexandremendoncaalvaro/script-raspberrypi-emulator"
 							target="_blank">
 							QEMU Raspbian (Raspberry Pi Emulator)
 						</a>
 					</h3>
+					<img width="100%" alt="" src="images/opensource-covers/qemu.jpg">
+					<a href="https://github.com/alexandremendoncaalvaro/script-raspberrypi-emulator" target="_blank">
+						https://github.com/alexandremendoncaalvaro/script-raspberrypi-emulator
+					</a>
 					<p>
-						Script to install, config and run QEMU emulator for Raspberry Pi
+						<lng opensource-qemu />
 					</p>
 
 				</div> <!-- project -->
@@ -806,7 +836,7 @@
 		</div>
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<p class="lead">more at <a href="https://github.com/alexandremendoncaalvaro" target="_blank"><i
+				<p class="lead"><span><lng moreat /></span><a href="https://github.com/alexandremendoncaalvaro" target="_blank"><i
 							class="fa fa-github"></i> Github</a></p>
 			</div>
 		</div> <!-- /section-intro-->
@@ -817,8 +847,10 @@
 	<section id="publications" class="highlights white-section">
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<h5>Publications</h5>
-				<h1>Blog posts and Tutorials</h1>
+				<h5>
+					<lng menu-publications />
+				</h5>
+				<h1><lng publications-subtitle /></h1>
 			</div>
 		</div> <!-- /section-intro-->
 		<div class="row portfolio-content">
@@ -858,14 +890,16 @@
 	<section id="lectures" class="highlights grey-section">
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<h5>Lectures</h5>
-				<h1>Technical Talks</h1>
+				<h5>
+					<lng menu-lectures />
+				</h5>
+				<h1><lng lectures-subtitle /></h1>
 			</div>
 		</div> <!-- /section-intro-->
 		<div class="row portfolio-content">
 			<div class="col-twelve">
 				<div class="col-six tab-full">
-					<h3>2020, Vai pro Digital,<br>at Youtube</h3>
+					<h3>2020, Vai pro Digital,<br>Youtube</h3>
 					<p>
 						<iframe width="100%" height="315" src="https://www.youtube.com/embed/AsUFV5Nc1iI"
 							frameborder="0"
@@ -874,7 +908,7 @@
 					</p>
 				</div> <!-- project -->
 				<div class="col-six tab-full">
-					<h3>2019, IoT Night,<br>at HBSIS Ambev</h3>
+					<h3>2019, IoT Night,<br>HBSIS Ambev</h3>
 					<p>
 						<iframe width="100%" height="315" src="https://www.youtube.com/embed/52wl75vsCqE"
 							frameborder="0"
@@ -883,7 +917,7 @@
 					</p>
 				</div> <!-- project -->
 				<div class="col-six tab-full">
-					<h3>2018, HBSIS Ambev recruitment,<br>at FURB University</h3>
+					<h3>2018, HBSIS Ambev,<br>FURB</h3>
 					<p>
 						<iframe width="100%" height="315" src="https://www.youtube.com/embed/o8jXPCX2FwQ"
 							frameborder="0"
@@ -893,7 +927,7 @@
 				</div> <!-- project -->
 
 				<div class="col-six tab-full">
-					<h3>2017, Agile Cuture application in our team<br>at HBSIS Ambev</h3>
+					<h3>2017, Agile<br>HBSIS Ambev</h3>
 					<p>
 						<iframe width="100%" height="315" src="https://www.youtube.com/embed/-PV3BJrdAqc"
 							frameborder="0"
@@ -903,9 +937,8 @@
 				</div> <!-- project -->
 
 				<div class="col-twelve tab-full">
-					<a href="#contact" title="Would you like a lecture?" class="button stroke smoothscroll">looking for
-						a
-						lecture?</a>
+					<a href="#contact" class="button stroke smoothscroll">
+						<lng about-lecture /></a>
 				</div> <!-- project -->
 
 			</div>
@@ -919,11 +952,13 @@
 		<div class="row section-intro">
 			<div class="col-twelve">
 
-				<h5>Hobbies</h5>
-				<h1>Illustration, Animation, and 3D</h1>
+				<h5>
+					<lng menu-portfolio />
+				</h5>
+				<h1><lng portfolio-subtitle /></h1>
 
-				<p class="lead">Those ones are freelance or just for fun.<br>
-					<small>I can't publish a lot of work because of the image rights.</small>
+				<p class="lead">
+					<lng portfolio-message />
 				</p>
 
 			</div>
@@ -1457,7 +1492,8 @@
 
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<p class="lead">more at <a href="https://www.deviantart.com/peritto/gallery" target="_blank"><i
+				<h1> </h1>
+				<p class="lead"><span><lng moreat /></span><a href="https://www.deviantart.com/peritto/gallery" target="_blank"><i
 							class="fa fa-deviantart"></i> Deviantart</a></p>
 			</div>
 		</div> <!-- /section-intro-->
@@ -1470,11 +1506,12 @@
 	<section id="music" class="highlights grey-section">
 		<div class="row section-intro">
 			<div class="col-twelve">
-				<h5>Hobbies</h5>
-				<h1>Music</h1>
+				<h5>
+					<lng menu-music />
+				</h5>
+				<h1><lng music-subtitle /></h1>
 
-				<p class="lead">Play guitar, sing, write songs, make the arrangement and mix tracks in Garage Band is a
-					big passion!</p>
+				<p class="lead"><lng music-message /></p>
 
 			</div>
 		</div> <!-- /section-intro-->
@@ -1496,7 +1533,7 @@
 						src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/80156373&color=%23fcb503&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
 				</div>
 
-				<p class="lead">more at <a href="https://soundcloud.com/peritto-1" target="_blank"><i
+				<p class="lead"><span><lng moreat /></span><a href="https://soundcloud.com/peritto-1" target="_blank"><i
 							class="fa fa-soundcloud"></i> SoundCloud</a></p>
 			</div>
 		</div>
@@ -1512,9 +1549,11 @@
 		<div class="row section-intro">
 			<div class="col-twelve">
 
-				<h5>Coworkers</h5>
-				<h1>Recomendations</h1>
-				<h3>Linkedin publications in brazillian portuguese</h3>
+				<h5>
+					<lng menu-coworkers />
+				</h5>
+				<h1><lng coworkers-subtitle /></h1>
+				<h3><lng coworkers-message /></h3>
 			</div>
 		</div> <!-- /section-intro -->
 		<div class="row services-content">
@@ -1865,7 +1904,7 @@
 						<h4>%</h4>
 
 						<h5 class="stat-title">
-							Native<br>Brazillian Portuguese
+							<lng stats-brazillian />
 						</h5>
 
 					</div> <!-- /stat -->
@@ -1882,7 +1921,8 @@
 						<h4>%</h4>
 
 						<h5 class="stat-title">
-							Intermediate-Advanced<br>English
+							
+							<lng stats-english />
 						</h5>
 
 					</div> <!-- /stat -->
@@ -1899,7 +1939,8 @@
 						<h4>%</h4>
 
 						<h5 class="stat-title">
-							Intermediate<br>Spanish
+							
+							<lng stats-spanish />
 						</h5>
 
 					</div> <!-- /stat -->
@@ -1916,7 +1957,8 @@
 						<h4>%</h4>
 
 						<h5 class="stat-title">
-							Basic-Intermediate<br>LIBRAS
+							
+							<lng stats-libras />
 						</h5>
 
 					</div> <!-- /stat -->
@@ -1936,11 +1978,10 @@
 		<div class="row section-intro">
 			<div class="col-twelve">
 
-				<h5>Contact</h5>
-				<h1>I'd Love To Hear From You.</h1>
+				<h5><lng menu-contact /></h5>
+				<h1><lng contact-subtitle /></h1>
 
-				<p class="lead">Do you like to invite me to do a lecture or<br>hire me for a freelance illustration,
-					animation,<br>3D modeling, technical consulting?</p>
+				<p class="lead"><lng contact-message /></p>
 
 			</div>
 		</div> <!-- /section-intro -->
@@ -1953,8 +1994,8 @@
 					<i class="icon-pin"></i>
 				</div>
 
-				<h5>Where to find me</h5>
-				<p><strong>business hours:</strong><br>
+				<h5><lng contact-where /></h5>
+				<p><strong><lng contact-business /></strong><br>
 					<a href="https://goo.gl/maps/LeJMfQnx4yKCwq269" target="_blank">HBSIS Ambev</a><br>
 					Rua Theodoro Holtrup, 982, Vila Nova<br>
 					89035-300, Blumenau, SC, Brazil
@@ -1967,11 +2008,11 @@
 					<i class="icon-mail"></i>
 				</div>
 
-				<h5>Email Me At</h5>
+				<h5>Email</h5>
 
-				<p><strong>personal:</strong><br><a
+				<p><strong><lng contact-personal /></strong><br><a
 						href="mailto:alexandre.alvaro@hotmail.com">alexandre.alvaro@hotmail.com</a><br>
-					<strong>professional:</strong><br>
+					<strong><lng contact-professional /></strong><br>
 					<a href="mailto:alexandre.alvaro@hbsis.com.br">alexandre.alvaro@hbsis.com.br</a>
 				</p>
 
@@ -1983,9 +2024,9 @@
 					<i class="icon-phone"></i>
 				</div>
 
-				<h5>WhatsApp/ Call Me At</h5>
+				<h5>WhatsApp</h5>
 
-				<p>Mobile: +55 (47) 9 9151-2508</p>
+				<p>+55 (47) 9 9151-2508</p>
 
 			</div>
 
@@ -2030,7 +2071,7 @@
 			</div>
 
 			<div id="go-top">
-				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+				<a class="smoothscroll" href="#top"><i class="fa fa-long-arrow-up"></i></a>
 			</div>
 
 		</div> <!-- /row -->
@@ -2047,7 +2088,6 @@
 	<script src="js/main.js"></script>
 	<script src="js/language.js"></script>
 	<script src="js/index.js"></script>
-
 </body>
 
 </html>

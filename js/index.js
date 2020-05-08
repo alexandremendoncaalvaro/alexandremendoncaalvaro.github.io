@@ -28,6 +28,14 @@ function parseURLParams(url) {
     return parms
 }
 
+const changeLanguage = () => {
+    const currentLocation = location.toString()
+    let newAddress = `?language=${document.querySelector('#language-link').innerHTML}`
+    if (currentLocation.indexOf('#') >= 0){
+        newAddress += `#${currentLocation.split('#')[1]}`
+    }
+    location = newAddress
+}
 
 const documentReady = () => {
     const keys = Object.keys(languageDictionary.en)
