@@ -1,4 +1,4 @@
-language = 'en'
+language = 'br'
 
 const includeTranslation = (personalizedAttribute) => {
     const domPlaces = document.querySelectorAll(`[${personalizedAttribute}]`)
