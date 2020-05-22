@@ -29,12 +29,25 @@ function parseURLParams(url) {
 }
 
 const changeLanguage = () => {
-    const currentLocation = location.toString()
     let newAddress = `?language=${document.querySelector('#language-link').innerHTML}`
-    if (currentLocation.indexOf('#') >= 0){
-        newAddress += `#${currentLocation.split('#')[1]}`
-    }
+    let currentSection = 'intro'
+    document.querySelectorAll("Section").forEach(section => {
+        if(isVisible(section)){
+            currentSection = section.id
+        }
+    })
+    newAddress += `#${currentSection}`
     location = newAddress
+}
+
+const isVisible = element => {
+    const { top, bottom } = element.getBoundingClientRect()
+    const vHeight = (window.innerHeight || document.documentElement.clientHeight)
+
+    return (
+        (top > 0 || bottom > 0) &&
+        top < vHeight
+    )
 }
 
 const documentReady = () => {
