@@ -19,18 +19,18 @@ const languageDictionary = {
         'intro-areas-2': 'IoT',
         'intro-areas-3': 'Industrial Automation',
         'intro-areas-4': 'Innovation',
-        'intro-comment': 'here you will find my references for a lecture or freelance',
+        'intro-comment': 'here you will find my references for a lecture or freelancing',
         'intro-more': 'More About Me',
         'about-intro-title': 'Let me introduce myself.',
-        'about-intro': `I´m a guy who loves to learn. Human and Exacts sciences.
+        'about-intro': `I´m a guy who loves to learn, in both human and exacts sciences.
                         <br>My professional experience is mainly focused on the design and development of industrial
                         automation equipment and embedded software (PLC and microcontroller firmware development).
-                        <br>But I also have worked with graphical interface design, 3D modeling, illustration, and
+                        <br>But I also worked with graphical interface design, 3D modeling, illustration, and
                         digital painting.
                         <br>In my career, I could learn a lot about electrics, electronics, hydraulics, pneumatics,
                         software development, and equipment commissioning.`,
         'about-profile-title': 'PROFILE',
-        'about-profile': `I’m here for innovation, tech & beer!<br>I´m very proud to working for <a
+        'about-profile': `I’m here for innovation, tech & beer!<br>I´m very proud to be working for <a
                         href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a>, an
                         <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a> company.
                         <br>I work as a technology researcher at LAHBS, the R&D department of <a
@@ -59,7 +59,8 @@ const languageDictionary = {
         'about-python': 'Python, SVG animation',
         'about-csharp': 'C#, SQL, COBOL, Pascal',
         'about-html': 'HTML, JS, CSS',
-        'about-flutter': 'Flutter,<br>Linux Enviroment',
+        'about-flutter': 'Flutter',
+        'about-linux': 'Linux Enviroment',
         'about-native': 'Native IOS,<br>Native Android',
         'about-virtualization': 'Virtualization,<br>Containers',
         'about-microcontrollers': 'Microcontroller, Electronics',
@@ -82,7 +83,7 @@ const languageDictionary = {
         'resume-hbsis': `Researcher at LAHBS, the R&D + Innovation department of HBSIS Ambev. Especialized in
                         Internet of Things and Industrial Automation.
                         Applied research with prototyping and Proof of Concept (PoC).
-                        Spread of innovation and intra-empreneurship suport between programs for all the
+                        Intra-empreneurship suport for spread of innovation programs for all the
                         company.`,
         'resume-tmgrole':'Automation Developer',
         'resume-tmgdate':'Oct 2014 - Jun 2016',
@@ -111,7 +112,7 @@ const languageDictionary = {
                         photographic film processing.`,
         'resume-freelancerole':'Aprendice: Graphic design, Illustration, Electronics and Software Development',
         'resume-freelancedate':'90´s – 2005',
-        'resume-freelance': `My first jod was a Cat's food Catalog in Corel Draw 5 (90's ending).
+        'resume-freelance': `My first jod was a Cats food Catalog in Corel Draw 5 (90's ending).
                             Since then, I started to create things like MODS (modifications) for games like GTA 1
                             and 2, Unreal Tournament, Age of Empires and Warcraft, and learned about algorithms,
                             image manipulation and animations.
@@ -130,7 +131,7 @@ const languageDictionary = {
         'projects-p55': `<strong>Automation software development and electrical design suport</strong><br>
                         Hydraulic Power Unit for subsea manifolds and controls for its Roncador Module III project. P55
                         offshore oil platform from Petrobras.`,
-        'projects-others':  `A Lot of sluices automation for Hydroelectric plants all over the country;
+        'projects-others':  `Several sluices automation for Hydroelectric plants all over the country;
                             </p>
                             <p class="lead">
                             Automation software for Chiller Systems - Colgate Palmolive, Itaú-Unibanco, Coca-Cola,
@@ -177,13 +178,13 @@ const languageDictionary = {
         'music-chordsubtitle':'Acoustic Guitar Chords',
         'music-chordmessage':'Contribution or Revision for Cifra Club (Chords Website).',
         'coworkers-subtitle':   'Coworkers',
-        'coworkers-message':    'Linkedin publications in brazillian portuguese',
-        'stats-brazillian': 'Native<br>Brazillian Portuguese',
+        'coworkers-message':    'Linkedin publications in brazilian portuguese',
+        'stats-brazillian': 'Native<br>Brazilian Portuguese',
         'stats-english': 'Intermediate-Advanced<br>English',
         'stats-spanish': 'Intermediate<br>Spanish',
         'stats-libras': 'Basic-Intermediate<br>LIBRAS',
         'contact-subtitle': "I'd Love To Hear From You.",
-        'contact-message':'Do you like to invite me to do a lecture or<br>hire me for a freelance illustration, animation,<br>3D modeling, technical consulting?',
+        'contact-message':'Would you like to invite me to do a lecture or<br>hire me for a freelance illustration, animation,<br>3D modeling, technical consulting?',
         'contact-where':'Where to find me',
         'contact-business':'business hours:',
         'contact-personal':'personal:',
@@ -248,7 +249,8 @@ const languageDictionary = {
         'about-python': 'Python, animações SVG',
         'about-csharp': 'C#, SQL, COBOL, Pascal',
         'about-html': 'HTML, JS, CSS',
-        'about-flutter': 'Flutter,<br>Ambiente Linux',
+        'about-flutter': 'Flutter',
+        'about-linux': 'Ambiente Linux',
         'about-native': 'IOS Nativo,<br>Android Nativo',
         'about-virtualization': 'Virtualização,<br>Containers',
         'about-microcontrollers': 'Microcontroladores, Eletrônica',
