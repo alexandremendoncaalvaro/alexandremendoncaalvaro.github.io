@@ -22,12 +22,12 @@ const languageDictionary = {
         'intro-comment': 'here you will find my references for a lecture or freelancing',
         'intro-more': 'More About Me',
         'about-intro-title': 'Let me introduce myself.',
-        'about-intro': `I´m a guy who loves to learn, in both human and exacts sciences.
+        'about-intro': `I´m a guy who loves to learn, in both human and exact sciences.
                         <br>My professional experience is mainly focused on the design and development of industrial
                         automation equipment and embedded software (PLC and microcontroller firmware development).
-                        <br>But I also worked with graphical interface design, 3D modeling, illustration, and
+                        <br>But I also have worked with graphical interface design, 3D modeling, illustration, and
                         digital painting.
-                        <br>In my career, I could learn a lot about electrics, electronics, hydraulics, pneumatics,
+                        <br>In my career, I have been able to learn a lot about electrics, electronics, hydraulics, pneumatics,
                         software development, and equipment commissioning.`,
         'about-profile-title': 'PROFILE',
         'about-profile': `I’m here for innovation, tech & beer!<br>I´m very proud to be working for <a
@@ -36,7 +36,7 @@ const languageDictionary = {
                         <br>I work as a technology researcher at LAHBS, the R&D department of <a
                         href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a>.<br>
                         I´m really excited about things that mix art with technology, like Motion Graphics, SVG animations,
-                        music creation with my guitar and GarageBand, development of computer vision algorithms, and more.`,
+                        creating music with my guitar and GarageBand, development of computer vision algorithms, and more.`,
         'about-fullname-title': 'FULLNAME',
         'about-birthdate-title': 'BIRTH DATE',
         'about-birthdate': 'January 2, 1985',
@@ -44,7 +44,7 @@ const languageDictionary = {
         'about-job': `Researcher at <a href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a><br>in Internet of Things <br>
                         and Industrial Automation`,
         'about-company-websites': 'Company Websites',
-        'about-hbsis-publication': 'HBSIS Ambev Publication at Linkedin (in Brazillian Portuguese)',
+        'about-hbsis-publication': 'HBSIS Ambev Publication on Linkedin (in Brazillian Portuguese)',
         'about-skills': 'Skills Highlights',
         'about-industrialautomation': 'Industrial Automation',
         'about-plc': 'PLC (Rexroth, Siemens, Rockewell)',
@@ -182,7 +182,7 @@ const languageDictionary = {
         'stats-brazillian': 'Native<br>Brazilian Portuguese',
         'stats-english': 'Intermediate-Advanced<br>English',
         'stats-spanish': 'Intermediate<br>Spanish',
-        'stats-libras': 'Basic-Intermediate<br>LIBRAS',
+        'stats-libras': 'Basic-Intermediate<br>Sign Language (LIBRAS)',
         'contact-subtitle': "I'd Love To Hear From You.",
         'contact-message':'Would you like to invite me to do a lecture or<br>hire me for a freelance illustration, animation,<br>3D modeling, technical consulting?',
         'contact-where':'Where to find me',
