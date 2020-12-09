@@ -31,20 +31,20 @@ const languageDictionary = {
                         software development, and equipment commissioning.`,
         'about-profile-title': 'PROFILE',
         'about-profile': `I’m here for innovation, tech & beer!<br>I´m very proud to be working for <a
-                        href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a>, an
+                        href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a>, an
                         <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a> company.
                         <br>I work as a technology researcher at LAHBS, the R&D department of <a
-                        href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a>.<br>
+                        href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a>.<br>
                         I´m really excited about things that mix art with technology, like Motion Graphics, SVG animations,
                         creating music with my guitar and GarageBand, development of computer vision algorithms, and more.`,
         'about-fullname-title': 'FULLNAME',
         'about-birthdate-title': 'BIRTH DATE',
         'about-birthdate': 'January 2, 1985',
         'about-job-title': 'Job',
-        'about-job': `Researcher at <a href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a><br>in Internet of Things <br>
+        'about-job': `Researcher at <a href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a><br>in Internet of Things <br>
                         and Industrial Automation`,
         'about-company-websites': 'Company Websites',
-        'about-hbsis-publication': 'HBSIS Ambev Publication on Linkedin (in Brazillian Portuguese)',
+        'about-hbsis-publication': 'Ambev Tech Publication on Linkedin (in Brazillian Portuguese)',
         'about-skills': 'Skills Highlights',
         'about-industrialautomation': 'Industrial Automation',
         'about-plc': 'PLC (Rexroth, Siemens, Rockewell)',
@@ -80,7 +80,7 @@ const languageDictionary = {
         'resume-workexperience':'Work Experience',
         'resume-hbsisrole':'Researcher',
         'resume-hbsisdate':'Jun 2016 - Present',
-        'resume-hbsis': `Researcher at LAHBS, the R&D + Innovation department of HBSIS Ambev. Especialized in
+        'resume-hbsis': `Researcher at LAHBS, the R&D + Innovation department of Ambev Tech. Especialized in
                         Internet of Things and Industrial Automation.
                         Applied research with prototyping and Proof of Concept (PoC).
                         Intra-empreneurship suport for spread of innovation programs for all the
@@ -222,7 +222,7 @@ const languageDictionary = {
                         desenvolvimento de software, comissionamento e startup de equipamentos industriais.`,
         'about-profile-title': 'PERFIL',
         'about-profile': `<i>I’m here for innovation, tech & beer!</i><br>Tenho muito orgulho de trabalhar na <a
-                        href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a>, empresa do grupo
+                        href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a>, empresa do grupo
                         <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a>.
                         <br>Eu atuo como pesquisador de tecnologia e inovação no LAHBS, o departamento de P&D da empresa.<br>
                         Sou apaixonado por misturar disciplinas de tecnologia e arte, como Motion Graphics, animações SVG,
@@ -231,10 +231,10 @@ const languageDictionary = {
         'about-birthdate-title': 'NASCIMENTO',
         'about-birthdate': '2 de janeiro de 1985',
         'about-job-title': 'Profissão',
-        'about-job': `Pesquisador na <a href="https://www.hbsis.com.br" target="_blank">HBSIS Ambev</a><br>em Internet das Coisas <br>
+        'about-job': `Pesquisador na <a href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a><br>em Internet das Coisas <br>
                         e Automação Industrial`,
         'about-company-websites': 'Sites da Companhia',
-        'about-hbsis-publication': 'Publicação da HBSIS Ambev no Linkedin',
+        'about-hbsis-publication': 'Publicação da Ambev Tech no Linkedin',
         'about-skills': 'Conhecimentos em destaque',
         'about-industrialautomation': 'Automação Industrial',
         'about-plc': 'CLP (Rexroth, Siemens, Rockewell)',
@@ -270,7 +270,7 @@ const languageDictionary = {
         'resume-workexperience':'Experiência',
         'resume-hbsisrole':'Pesquisador',
         'resume-hbsisdate':'Jun 2016 - Presente',
-        'resume-hbsis': `Pesquisador no LAHBS, o departamento de P&D da HBSIS Ambev. Especializado em Internet das Coisas e Automação Industrial.
+        'resume-hbsis': `Pesquisador no LAHBS, o departamento de P&D da Ambev Tech. Especializado em Internet das Coisas e Automação Industrial.
                         Pesquisa Aplicada com prototipação e Provas de Conceito (PoC).
                         Difusão da Inovação e suporte ao Intraempreendedorismo através de programas para toda a companhia.`,
         'resume-tmgrole': 'Analista de Sistemas de Automação',
