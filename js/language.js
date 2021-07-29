@@ -15,12 +15,14 @@ const languageDictionary = {
         'menu-contact': 'Contact',
         'intro-hello': 'HI THERE!',
         'intro-introduction': "I'm Alexandre Alvaro.",
-        'intro-areas-1': 'Researcher',
+        'intro-areas-1': 'Research',
         'intro-areas-2': 'IoT',
         'intro-areas-3': 'Industrial Automation',
         'intro-areas-4': 'Innovation',
+        'intro-areas-5': 'Podcast',
         'intro-comment': 'here you will find my references for a lecture or freelancing',
         'intro-more': 'More About Me',
+        'intro-podcast': 'Ambev Tech Talk last Episode:',
         'about-intro-title': 'Let me introduce myself.',
         'about-intro': `I´m a guy who loves to learn, in both human and exact sciences.
                         <br>My professional experience is mainly focused on the design and development of industrial
@@ -32,9 +34,8 @@ const languageDictionary = {
         'about-profile-title': 'PROFILE',
         'about-profile': `I’m here for innovation, tech & beer!<br>I´m very proud to be working for <a
                         href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a>, an
-                        <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a> company.
-                        <br>I work as a technology researcher at LAHBS, the R&D department of <a
-                        href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a>.<br>
+                        <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a> company. I work as a technology researcher at the R&D department.<br>
+                        I'm a co-host of the <a href="https://open.spotify.com/show/07cPNODgBHWh2JMkHbZxXG" target="_blank">Ambev Tech podcast</a> too!<br>
                         I´m really excited about things that mix art with technology, like Motion Graphics, SVG animations,
                         creating music with my guitar and GarageBand, development of computer vision algorithms, and more.`,
         'about-fullname-title': 'FULLNAME',
@@ -207,12 +208,14 @@ const languageDictionary = {
         'menu-contact': 'Contato',
         'intro-hello': 'OLÁ!',
         'intro-introduction': "sou Alexandre Alvaro",
-        'intro-areas-1': 'Pesquisador',
+        'intro-areas-1': 'Pesquisa',
         'intro-areas-2': 'IoT',
         'intro-areas-3': 'Automação Industrial',
         'intro-areas-4': 'Inovação',
+        'intro-areas-5': 'Podcast',
         'intro-comment': 'aqui você vai encontrar referências minhas para uma palestra ou freelance',
         'intro-more': 'Mais sobre mim',
+        'intro-podcast': 'Último episódio do Ambev Tech Talk:',
         'about-intro-title': 'Deixa eu me apresentar.',
         'about-intro': `Sou um cara que adora aprender. Independente de ser sobre humanas ou exatas.
                         <br>Minha maior experiência profissional é com projeto e desenvolvimento de equipamentos de automação industrial
@@ -224,8 +227,8 @@ const languageDictionary = {
         'about-profile-title': 'PERFIL',
         'about-profile': `<i>I’m here for innovation, tech & beer!</i><br>Tenho muito orgulho de trabalhar na <a
                         href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a>, empresa do grupo
-                        <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a>.
-                        <br>Eu atuo como pesquisador de tecnologia e inovação no LAHBS, o departamento de P&D da empresa.<br>
+                        <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a>. Eu atuo como pesquisador de tecnologia e inovação no departamento de P&D da empresa.<br>
+                        Também sou co-host no <a href="https://open.spotify.com/show/07cPNODgBHWh2JMkHbZxXG" target="_blank">podcast Ambev Tech</a>!<br>
                         Sou apaixonado por misturar disciplinas de tecnologia e arte, como Motion Graphics, animações SVG,
                         criação de música com meu violão e o GarageBand, desenvolvimento de algoritmos de visão computacional, entre outros.`,
         'about-fullname-title': 'NOME',
