@@ -81,7 +81,7 @@ const languageDictionary = {
         'resume-workexperience':'Work Experience',
         'resume-hbsisrole':'Researcher',
         'resume-hbsisdate':'Jun 2016 - Present',
-        'resume-hbsis': `Researcher at LAHBS, the R&D + Innovation department of Ambev Tech. Especialized in
+        'resume-hbsis': `Researcher at Beer Garage, the R&D + Innovation department of AB-Inbev. Especialized in
                         Internet of Things and Industrial Automation.
                         Applied research with prototyping and Proof of Concept (PoC).
                         Intra-empreneurship suport for spread of innovation programs for all the
@@ -274,7 +274,7 @@ const languageDictionary = {
         'resume-workexperience':'Experiência',
         'resume-hbsisrole':'Pesquisador',
         'resume-hbsisdate':'Jun 2016 - Presente',
-        'resume-hbsis': `Pesquisador no LAHBS, o departamento de P&D da Ambev Tech. Especializado em Internet das Coisas e Automação Industrial.
+        'resume-hbsis': `Pesquisador no Beer Garage, o departamento de P&D da Ab-Inbev. Especializado em Internet das Coisas e Automação Industrial.
                         Pesquisa Aplicada com prototipação e Provas de Conceito (PoC).
                         Difusão da Inovação e suporte ao Intraempreendedorismo através de programas para toda a companhia.`,
         'resume-tmgrole': 'Analista de Sistemas de Automação',
@@ -288,7 +288,7 @@ const languageDictionary = {
         'resume-boshdate':'Jun 2012 – Set 2014',
         'resume-bosh':  `Desenvolvimento de softwares de Automação, projeto elétrico, comissionamento de equipamentos, desenvolvimento de software.
                         Configuradores de produtos com Excel + VBA, Adobe Live Cycle (Formulários Dinâmicos em PDF com javascript), e C#.`,
-        'resume-ttmrole':'Industrial Automation Designer & Team Leader',
+        'resume-ttmrole':'Analista de Sistemas de Automação/ Lider Técnico',
         'resume-ttmdate':'May 2009 – Jun 2012',
         'resume-ttm':   `Desenvolvimento de softwares de Automação, projeto elétrico, comissionamento de equipamentos, desenvolvimento de software.
                         Principalmente para Bosch Rexroth (outsourcing). Mas também tivemos grande projetos com a Lavrita

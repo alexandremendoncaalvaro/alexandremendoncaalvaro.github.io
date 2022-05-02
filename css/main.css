@@ -1272,7 +1272,7 @@ header .top-bar {
 	display: block;
 	background: #000000;
 	min-width: 220px;
-	min-height: 66px;
+	min-height: 50px;
 	position: absolute;
 	left: 90px;
 	top: 0;
@@ -1282,7 +1282,7 @@ header .logo {
 	float: left;
 	margin-left: 20px;
 	margin-right: 50px;
-	margin-top: 25px;
+	margin-top: 13px;
 	position: relative;
 }
 
@@ -1331,9 +1331,9 @@ header .logo a {
 .menu-toggle {
 	float: left;
 	width: 40px;
-	height: 40px;
+	height: 20px;
 	margin-left: 20px;
-	margin-top: 13px;
+	margin-top: 10px;
 	display: block;
 	position: relative;
 }
@@ -1626,6 +1626,11 @@ header .logo a {
 	left: 1.2rem;
 }
 
+.intro-content .player-spotify {
+	max-width: 50%;
+	margin: auto;
+}
+
 #moreabout::after {
 	content: "\f107";
 }
@@ -1685,6 +1690,9 @@ header .logo a {
 	}
 	.intro-content .intro-position {
 		font-size: 1.3rem;
+	}
+	.intro-content .player-spotify {
+		display: none;
 	}
 	.intro-social {
 		font-size: 2.5rem;

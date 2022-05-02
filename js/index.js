@@ -29,7 +29,7 @@ function parseURLParams(url) {
 }
 
 const changeLanguage = () => {
-    let newAddress = `?language=${document.querySelector('#language-link').innerHTML}`
+    let newAddress = `?language=${document.querySelector('#language-link').innerHTML.trim()}`
     let currentSection = 'intro'
     document.querySelectorAll("Section").forEach(section => {
         if(isVisible(section)){
