@@ -79,29 +79,35 @@ const languageDictionary = {
         'about-andmore': 'Creative; Team Worker; Focused; Communicative; Proactive; Study enthusiast; Fast learner; Self-taught; Good listener and with Natural Leadership.',
         'about-lecture': 'looking for a lecture?',
         'resume-workexperience':'Work Experience',
-        'resume-hbsisrole':'Researcher',
+        'resume-hbsisrole':'Software Architect/ Tech Lead',
         'resume-hbsisdate':'Jun 2016 - Present',
-        'resume-hbsis': `Researcher at Beer Garage, the R&D + Innovation department of AB-Inbev. Especialized in
+        'resume-hbsis': `Now: Software Architect/ Tech Lead<br>
+                        SODA Vision Team's Tech Lead. 
+                        Responsible for designing solution architecture and developing prototypes and proofs of concept, focusing on IoT,
+                        Industrial IoT, OT IT Convergence, Artificial Intelligence, and Computer Vision.
+                        <br><br>Before: Researcher/ Tech Lead<br>
+                        Beegeye Team's Tech Lead. 
+                        Researcher at Beer Garage, the R&D + Innovation department of AB-Inbev. Especialized in
                         Internet of Things and Industrial Automation.
                         Applied research with prototyping and Proof of Concept (PoC).
                         Intra-empreneurship suport for spread of innovation programs for all the
                         company.`,
-        'resume-tmgrole':'Automation Developer',
+        'resume-tmgrole':'Equipment & Software Engineer',
         'resume-tmgdate':'Oct 2014 - Jun 2016',
-        'resume-tmg':   `Concept, design, prototyping, software and hardware development of full automation
-                        equipment. Hardware and Software projects management.`,
-        'resume-boshrole':'Industrial Automation & Electrical Designer',
+        'resume-tmg':   `Responsible for conceptualizing, designing, prototyping, and developing hardware and software for complete automation equipment.
+                        Managing hardware and software projects.
+                        Focusing on Business Intelligence and Analytics systems.
+                        Developing software and apps, implementing systems, and designing system architecture, 
+                        along with creating APIs for seamless integration.`,
+        'resume-boshrole':'Tech Lead - System for Industrial Automation',
         'resume-boshdate':'Jun 2012 – Sep 2014',
-        'resume-bosh':  `Automation software engineering, electrical design, equipment commissioning, software
-                        development.
-                        Product Configurators with Excel + VBA, Adobe Live Cycle (Dynamic PDF Forms with
-                        javascript), and C#.`,
-        'resume-ttmrole':'Industrial Automation Designer & Team Leader',
+        'resume-bosh':  `Automation software engineering, electrical design, equipment commissioning, and software development.
+                        Product configurators utilizing Excel + VBA, Adobe LiveCycle (dynamic PDF forms with JavaScript), and C#.`,
+        'resume-ttmrole':'Tech Lead - System for Industrial Automation',
         'resume-ttmdate':'May 2009 – Jun 2012',
-        'resume-ttm':   `Automation software engineering, electrical design, equipment commissioning, software
-                        development.
-                        Mainly for Bosch Rexroth (outsourcing). But we had big projects with Lavrita
-                        Engenharia, Sulser (Frio Brasil), and others significant players.`,
+        'resume-ttm':   `Automation software engineering, electrical design, equipment commissioning, software development.
+                        Mainly for Bosch Rexroth (outsourcing). But we had important projects with Lavrita Engenharia, Sulser (Frio Brasil),
+                        and others significant players too.`,
         'resume-mayekawarole':'Industrial Automation Software Developer',
         'resume-date':'Apr 2007 – May 2009',
         'resume-mayekawa':'Automation software engineering, PLC, HMI, and SCADA supervisory development.',
