@@ -80,8 +80,11 @@ check_repo() {
         upstream_branch=$(git rev-parse --abbrev-ref "$local_branch@{u}" 2>/dev/null)
 
         if [[ -z "$upstream_branch" ]]; then
+            # Se não há upstream, pode ser apenas local ou o upstream foi removido.
+            # A verificação de "gone" cuidará do segundo caso.
+            # Adiciona a local_only_branches por enquanto, será filtrado depois se for "gone".
             local_only_branches+=("$repo_dir:$local_branch")
-            continue
+            continue # Pula a comparação de ahead/behind se não há upstream direto
         fi
 
         local counts ahead behind
@@ -89,8 +92,10 @@ check_repo() {
         counts=$(git rev-list --left-right --count "$local_branch...$upstream_branch" 2>/dev/null)
         
         if [[ $? -ne 0 ]]; then
+             # Esta condição agora é menos provável de ser a primeira a falhar se o upstream sumiu,
+             # pois o `git rev-parse ...@{u}` já teria falhado ou retornado vazio.
+             # Mas mantemos para robustez.
              echo -e "    ${YELLOW}Branch local '$local_branch':${NC} Não foi possível comparar com o upstream configurado ${BLUE}'$upstream_branch'${NC}. O branch remoto pode ter sido removido ou o nome é inválido."
-             # Este branch pode ser um candidato para 'gone_upstream_candidates', que será verificado no próximo loop.
              continue
         fi
 
@@ -113,10 +118,12 @@ check_repo() {
 
     # Loop dedicado para identificar branches com upstreams "gone"
     # Usar --no-color para simplificar o parsing do 'git branch -vv'
-    git branch -vv --no-color | while IFS= read -r line; do
+    # Usar substituição de processo para evitar problemas de subshell com modificação de array
+    while IFS= read -r line; do
         if [[ "$line" == *": gone]"* ]]; then
             local gone_branch_name
-            gone_branch_name=$(echo "$line" | sed 's/^[ *]*//' | awk '{print $1}')
+            # Extrai o nome do branch. Remove o '*' inicial (se for o branch atual) e tudo após o primeiro espaço.
+            gone_branch_name=$(echo "$line" | sed -e 's/^[ *]*//' -e 's/ .*//')
             
             local current_branch_in_repo_for_gone_check
             current_branch_in_repo_for_gone_check=$(git rev-parse --abbrev-ref HEAD)
@@ -124,7 +131,7 @@ check_repo() {
             if [[ "$gone_branch_name" == "$current_branch_in_repo_for_gone_check" ]]; then
                  echo -e "    ${YELLOW}Branch local ATIVO '$gone_branch_name'${NC}: Upstream remoto removido. Não pode ser podado enquanto ativo."
             else
-                 # Evitar duplicatas se já foi adicionado por outra verificação (improvável com esta lógica)
+                 # Evitar duplicatas
                  local already_candidate=false
                  for existing_candidate in "${gone_upstream_candidates[@]}"; do
                      if [[ "$existing_candidate" == "$repo_dir:$gone_branch_name:"* ]]; then
@@ -135,10 +142,27 @@ check_repo() {
                  if ! $already_candidate; then
                     echo -e "    ${YELLOW}Branch local '$gone_branch_name'${NC}: Upstream remoto removido. Candidato para poda."
                     gone_upstream_candidates+=("$repo_dir:$gone_branch_name:${repo_original_branch["$repo_dir"]}")
+                    
+                    # Remover da lista de "apenas local" se estiver lá, pois agora sabemos que tinha um upstream que sumiu
+                    for i in "${!local_only_branches[@]}"; do
+                        if [[ "${local_only_branches[$i]}" == "$repo_dir:$gone_branch_name" ]]; then
+                            unset 'local_only_branches[i]'
+                            break 
+                        fi
+                    done
                  fi
             fi
         fi
+    done < <(git branch -vv --no-color)
+
+
+    # Reconstruir local_only_branches para remover índices vazios se algo foi removido
+    local_only_branches_temp=("${local_only_branches[@]}")
+    local_only_branches=()
+    for item in "${local_only_branches_temp[@]}"; do
+        local_only_branches+=("$item")
     done
+
 
     cd "$original_pwd" > /dev/null
 }
@@ -146,7 +170,6 @@ check_repo() {
 # --- FUNÇÃO PARA LIDAR COM PULLS ---
 handle_pulls() {
     if [ ${#pull_candidates[@]} -eq 0 ]; then
-        # echo -e "\n${GREEN}✨ Nenhum branch precisa de pull.${NC}" # Mensagem movida para o resumo
         return
     fi
 
@@ -317,19 +340,16 @@ process_pull_item() {
 # --- FUNÇÃO PARA LIDAR COM PODA DE BRANCHES ---
 handle_pruning() {
     if [ ${#gone_upstream_candidates[@]} -eq 0 ]; then
-        # echo -e "\n${GREEN}✨ Nenhum branch local com upstream ausente encontrado para poda.${NC}" # Mensagem movida para o resumo
         return
     fi
 
     echo -e "\n🌿 ${YELLOW}Os seguintes branches locais têm upstreams remotos ausentes e podem ser podados:${NC}"
     local display_index=1
-    local valid_prune_options_for_select=() # Array para armazenar os itens que serão mostrados no select
-    local prune_map_for_select=() # Mapeia o índice do select para o item original em gone_upstream_candidates
+    local valid_prune_options_for_select=() 
+    local prune_map_for_select=() 
 
     for i in "${!gone_upstream_candidates[@]}"; do
         IFS=':' read -r repo_path branch_to_prune _ <<< "${gone_upstream_candidates[$i]}"
-        # Não listar o branch ativo como opção direta de poda no menu, mas informar no resumo
-        # A lógica de process_prune_item já impede a poda do branch ativo.
         echo -e "  $display_index) Repositório: ${BLUE}$repo_path${NC} | Branch: ${YELLOW}$branch_to_prune${NC}"
         valid_prune_options_for_select+=("Repo: $repo_path | Branch: $branch_to_prune")
         prune_map_for_select[$display_index]="${gone_upstream_candidates[$i]}"
@@ -343,21 +363,19 @@ handle_pruning() {
 
     echo 
     PS3=$'\nEscolha uma opção para poda (ou digite o número): '
-    # Adicionar "Não" como última opção no array de opções do select
     options_for_select_menu=("Sim, podar todos os branches listados (exceto ativos)" "Sim, escolher individualmente quais podar" "Não, não podar branches agora")
 
     while true; do
         select opt_text in "${options_for_select_menu[@]}"; do
             case $opt_text in
                 "Sim, podar todos os branches listados (exceto ativos)")
-                    for item_to_prune in "${gone_upstream_candidates[@]}"; do # Iterar sobre todos os candidatos originais
+                    for item_to_prune in "${gone_upstream_candidates[@]}"; do 
                         process_prune_item "$item_to_prune" "all"
                     done
                     return 
                     ;;
                 "Sim, escolher individualmente quais podar")
                     echo -e "${YELLOW}Escolha os branches para podar individualmente:${NC}"
-                    # Gerar um menu select dinâmico para os itens individuais
                     local individual_choices_display=()
                     local individual_choices_map=()
                     local choice_idx=1
@@ -372,14 +390,14 @@ handle_pruning() {
                     PS3_INDIVIDUAL="Podar qual branch? (ou 'Concluir'): "
                     select ind_choice_text in "${individual_choices_display[@]}"; do
                         if [[ "$ind_choice_text" == "Concluir seleção individual" ]]; then
-                            break # Sai do select individual
+                            break 
                         elif [[ -n "$REPLY" && "$REPLY" -le ${#individual_choices_map[@]} ]]; then
-                            process_prune_item "${individual_choices_map[$REPLY]}" "individual_selected" # modo especial para indicar que foi selecionado
+                            process_prune_item "${individual_choices_map[$REPLY]}" "individual_selected" 
                         else
                             echo -e "${RED}Opção inválida $REPLY.${NC}"
                         fi
                     done
-                    return # Sai da função handle_pruning após seleção individual
+                    return 
                     ;;
                 "Não, não podar branches agora")
                     echo -e "${BLUE}❌ Nenhuma ação de poda realizada.${NC}"
@@ -387,7 +405,7 @@ handle_pruning() {
                     ;;
                 *) 
                     echo -e "${RED}Opção inválida $REPLY. Por favor, tente novamente.${NC}"
-                    break # Sai do select interno para repetir o prompt principal de poda
+                    break 
                     ;;
             esac
         done
@@ -401,9 +419,7 @@ process_prune_item() {
     
     IFS=':' read -r repo_path branch_to_prune original_b_repo <<< "$item"
 
-    # No modo 'individual_selected', a confirmação já foi implícita pela seleção.
-    # No modo 'individual' (que não é mais usado diretamente aqui, mas mantido por segurança), pediria confirmação.
-    if [[ "$mode" == "individual" ]]; then # Este modo não é mais chamado diretamente com 'individual'
+    if [[ "$mode" == "individual" ]]; then 
         read -r -p $"  Podar branch local '${YELLOW}$branch_to_prune${NC}' em '${BLUE}$repo_path${NC}' (upstream removido)? (s/N): " choice
         if [[ ! "$choice" =~ ^[Ss]$ ]]; then
             echo -e "  ⏭️  ${BLUE}Poda de '$branch_to_prune' em '$repo_path' pulada.${NC}"
@@ -475,11 +491,12 @@ fi
 
 # Relatório Final (Resumido)
 echo -e "\n${BLUE}================= RESUMO ====================${NC}"
+# Corrigido: remover 'local' da declaração de uncommitted_found
+uncommitted_found=false # Declarar sem 'local' aqui
 if [[ ${#repo_has_uncommitted_changes[@]} -gt 0 ]]; then
-    local uncommitted_found=false
     for repo_path_key in "${!repo_has_uncommitted_changes[@]}"; do
         if [[ "${repo_has_uncommitted_changes[$repo_path_key]}" == "true" ]]; then
-            if ! $uncommitted_found; then
+            if ! $uncommitted_found; then # Usar a variável já declarada
                  echo -e "\n${YELLOW}Repositórios com alterações locais não commitadas:${NC}"
                  uncommitted_found=true
             fi
@@ -514,13 +531,31 @@ if [[ ${#diverged_branches[@]} -gt 0 ]]; then
     done
 fi
 
-if [[ ${#local_only_branches[@]} -gt 0 ]]; then
-    echo -e "\n${BLUE}Branches APENAS LOCAIS (sem rastreamento remoto):${NC}"
-    for item in "${local_only_branches[@]}"; do
+# Filtrar a lista de local_only_branches para não incluir os que são 'gone'
+declare -a final_local_only_branches=()
+for local_item in "${local_only_branches[@]}"; do
+    is_gone=false
+    IFS=':' read -r lo_repo_path lo_branch_name <<< "$local_item"
+    for gone_item in "${gone_upstream_candidates[@]}"; do
+        IFS=':' read -r g_repo_path g_branch_name _ <<< "$gone_item"
+        if [[ "$lo_repo_path" == "$g_repo_path" && "$lo_branch_name" == "$g_branch_name" ]]; then
+            is_gone=true
+            break
+        fi
+    done
+    if ! $is_gone; then
+        final_local_only_branches+=("$local_item")
+    fi
+done
+
+if [[ ${#final_local_only_branches[@]} -gt 0 ]]; then
+    echo -e "\n${BLUE}Branches APENAS LOCAIS (sem rastreamento remoto configurado ou válido):${NC}"
+    for item in "${final_local_only_branches[@]}"; do
         IFS=':' read -r repo_path_item local_b_item <<< "$item"
         echo -e "  - Repo: $repo_path_item | Branch: $local_b_item"
     done
 fi
+
 
 if [[ ${#gone_upstream_candidates[@]} -gt 0 ]]; then
     echo -e "\n${YELLOW}Branches com UPSTREAMS REMOTOS AUSENTES (candidatos à poda local):${NC}"
