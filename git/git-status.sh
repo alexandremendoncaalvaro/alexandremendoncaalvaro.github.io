@@ -4,11 +4,7 @@
 # set -e # Descomente para sair imediatamente em caso de erro (pode precisar de ajustes no tratamento de erro)
 set -o pipefail # Falha o pipeline se algum comando intermediário falhar
 
-# Verificar versão mínima do bash (para compatibilidade macOS/Linux)
-if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
-    echo "⚠️  Este script requer Bash 4.0 ou superior. Versão atual: $BASH_VERSION"
-    echo "💡 No macOS, instale uma versão mais recente: brew install bash"
-fi
+# Script compatível com Bash 3.2+ (incluindo macOS padrão)
 
 # --- DETECTAR SHELL E VERIFICAR ALIAS ---
 detect_shell_and_alias() {
@@ -154,14 +150,70 @@ YELLOW='\033[0;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Arrays globais para armazenar informações coletadas
-declare -A repo_has_uncommitted_changes # Associa caminho do repo com true/false
-declare -A repo_original_branch       # Associa caminho do repo com o branch original
+# Arrays simples compatíveis com Bash 3.2 para armazenar informações coletadas
+repo_paths=()                         # Caminhos dos repositórios
+repo_uncommitted_status=()            # Status de mudanças não commitadas (true/false)
+repo_original_branches=()             # Branches originais dos repositórios
 pull_candidates=()                    # Lista de strings: "repo_path:local_branch:upstream_branch:original_branch_in_repo"
 push_candidates=()                    # Lista de strings: "repo_path:local_branch:upstream_branch:ahead_count"
 diverged_branches=()                  # Lista de strings: "repo_path:local_branch:upstream_branch:ahead_count:behind_count"
 local_only_branches=()                # Lista de strings: "repo_path:local_branch"
 gone_upstream_candidates=()           # Lista de strings: "repo_path:local_branch_to_prune:original_branch_in_repo"
+
+# Funções para manipular os arrays simples como se fossem associativos
+get_repo_index() {
+    local repo_path="$1"
+    local i=0
+    for path in "${repo_paths[@]}"; do
+        if [[ "$path" == "$repo_path" ]]; then
+            echo "$i"
+            return 0
+        fi
+        ((i++))
+    done
+    return 1
+}
+
+add_repo_data() {
+    local repo_path="$1"
+    local uncommitted="$2"
+    local original_branch="$3"
+    
+    repo_paths[${#repo_paths[@]}]="$repo_path"
+    repo_uncommitted_status[${#repo_uncommitted_status[@]}]="$uncommitted"
+    repo_original_branches[${#repo_original_branches[@]}]="$original_branch"
+}
+
+get_repo_uncommitted_status() {
+    local repo_path="$1"
+    local index
+    if index=$(get_repo_index "$repo_path"); then
+        echo "${repo_uncommitted_status[$index]}"
+        return 0
+    fi
+    return 1
+}
+
+set_repo_uncommitted_status() {
+    local repo_path="$1"
+    local status="$2"
+    local index
+    if index=$(get_repo_index "$repo_path"); then
+        repo_uncommitted_status[$index]="$status"
+        return 0
+    fi
+    return 1
+}
+
+get_repo_original_branch() {
+    local repo_path="$1"
+    local index
+    if index=$(get_repo_index "$repo_path"); then
+        echo "${repo_original_branches[$index]}"
+        return 0
+    fi
+    return 1
+}
 
 
 # --- FUNÇÕES AUXILIARES ---
@@ -192,9 +244,11 @@ check_repo() {
         return
     fi
 
-    repo_original_branch["$repo_dir"]=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-    if [[ -z "${repo_original_branch["$repo_dir"]}" ]]; then
+    local original_branch
+    original_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [[ -z "$original_branch" ]]; then
         echo -e "  ${YELLOW}Aviso: Nenhum branch ativo em $repo_dir ou repositório não inicializado/vazio.${NC}"
+        original_branch=""
     fi
 
     echo -e "  🔄 ${BLUE}Buscando atualizações remotas (git fetch --all --prune)...${NC}"
@@ -202,12 +256,14 @@ check_repo() {
         echo -e "  ${YELLOW}Aviso: 'git fetch' pode ter tido problemas em $repo_dir. As informações podem estar desatualizadas.${NC}"
     fi
 
+    local has_uncommitted="false"
     if [[ -n "$(git status --porcelain)" ]]; then
         echo -e "  ${YELLOW}⚠️  Possui alterações locais não commitadas.${NC}"
-        repo_has_uncommitted_changes["$repo_dir"]="true"
-    else
-        repo_has_uncommitted_changes["$repo_dir"]="false"
+        has_uncommitted="true"
     fi
+    
+    # Adicionar dados do repositório aos arrays
+    add_repo_data "$repo_dir" "$has_uncommitted" "$original_branch"
 
     local branches
     branches=$(git for-each-ref --format='%(refname:short)' refs/heads/)
@@ -250,7 +306,7 @@ check_repo() {
             echo -e "    ${GREEN}Branch local '$local_branch'${NC} (rastreia ${BLUE}'$upstream_branch'${NC}): Sincronizado ✅"
         elif [[ "$ahead" -eq 0 && "$behind" -gt 0 ]]; then
             echo -e "    ${YELLOW}Branch local '$local_branch'${NC} (rastreia ${BLUE}'$upstream_branch'${NC}): Desatualizado 🔽 (precisa de pull - $behind commits)"
-            pull_candidates+=("$repo_dir:$local_branch:$upstream_branch:${repo_original_branch["$repo_dir"]}")
+            pull_candidates+=("$repo_dir:$local_branch:$upstream_branch:$original_branch")
         elif [[ "$ahead" -gt 0 && "$behind" -eq 0 ]]; then
             echo -e "    ${BLUE}Branch local '$local_branch'${NC} (rastreia ${BLUE}'$upstream_branch'${NC}): À frente 🔼 (precisa de push - $ahead commits)"
             push_candidates+=("$repo_dir:$local_branch:$upstream_branch:$ahead")
@@ -285,7 +341,7 @@ check_repo() {
                  done
                  if ! $already_candidate; then
                     echo -e "    ${YELLOW}Branch local '$gone_branch_name'${NC}: Upstream remoto removido. Candidato para poda."
-                    gone_upstream_candidates+=("$repo_dir:$gone_branch_name:${repo_original_branch["$repo_dir"]}")
+                    gone_upstream_candidates+=("$repo_dir:$gone_branch_name:$original_branch")
                     
                     # Remover da lista de "apenas local" se estiver lá, pois agora sabemos que tinha um upstream que sumiu
                     for i in "${!local_only_branches[@]}"; do
@@ -395,7 +451,7 @@ process_pull_item() {
             if git stash push -u -m "Autostash by sync_script for pulling $local_b_to_pull"; then
                 echo -e "    ${GREEN}Stash criado com sucesso.${NC}"
                 did_stash_for_this_operation=true
-                repo_has_uncommitted_changes["$repo_path"]="false" 
+                set_repo_uncommitted_status "$repo_path" "false" 
             else
                 echo -e "    ${RED}Falha ao criar stash. Pull de '$local_b_to_pull' abortado para este repositório.${NC}"
                 cd "$original_pwd_pull_item" > /dev/null
@@ -460,11 +516,11 @@ process_pull_item() {
         echo -e "  ${BLUE}Restaurando stash...${NC}"
         if git stash pop; then 
             echo -e "  ${GREEN}Stash restaurado com sucesso.${NC}"
-            repo_has_uncommitted_changes["$repo_path"]="true" 
+            set_repo_uncommitted_status "$repo_path" "true"
         else
             echo -e "  ${RED}Falha ao restaurar o stash (possível conflito). Resolva manualmente em '$repo_path'.${NC}"
             echo -e "  ${YELLOW}O stash ainda pode estar lá. Use 'git stash list' e 'git stash apply <stash_id>'.${NC}"
-            repo_has_uncommitted_changes["$repo_path"]="true"
+            set_repo_uncommitted_status "$repo_path" "true"
         fi
     fi
 
@@ -615,15 +671,34 @@ else
     echo -e "${BLUE}🔍 Iniciando verificação dos repositórios...${NC}"
 fi
 
-declare -A processed_repo_roots
+# Array simples para rastrear repositórios já processados
+processed_repo_roots=()
+
+# Função para verificar se um repositório já foi processado
+is_repo_processed() {
+    local repo_root="$1"
+    local i
+    for i in "${processed_repo_roots[@]}"; do
+        if [[ "$i" == "$repo_root" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+# Função para marcar um repositório como processado
+mark_repo_processed() {
+    local repo_root="$1"
+    processed_repo_roots[${#processed_repo_roots[@]}]="$repo_root"
+}
 
 # Usar substituição de processo para o loop while
 # Compatibilidade macOS/Linux: usar find com sintaxe mais portável
 while IFS= read -r -d $'\0' git_dir_found; do
     repo_root_candidate=$(get_repo_root "$(dirname "$git_dir_found")")
-    if [[ -n "$repo_root_candidate" && -z "${processed_repo_roots["$repo_root_candidate"]}" ]]; then
+    if [[ -n "$repo_root_candidate" ]] && ! is_repo_processed "$repo_root_candidate"; then
         check_repo "$repo_root_candidate"
-        processed_repo_roots["$repo_root_candidate"]=1 
+        mark_repo_processed "$repo_root_candidate"
     fi
 done < <(find . -type d -name ".git" -print0 2>/dev/null)
 
@@ -633,7 +708,7 @@ if [[ ${#processed_repo_roots[@]} -eq 0 ]]; then
     if [[ -n "$current_dir_as_repo_root" ]]; then 
         echo "Nenhum sub-repositório .git encontrado, verificando o diretório atual como um repositório Git..."
         check_repo "$current_dir_as_repo_root"
-        processed_repo_roots["$current_dir_as_repo_root"]=1 
+        mark_repo_processed "$current_dir_as_repo_root" 
     fi
 fi
 
@@ -645,19 +720,17 @@ fi
 
 # Relatório Final (Resumido)
 echo -e "\n${BLUE}================= RESUMO ====================${NC}"
-# Corrigido: remover 'local' da declaração de uncommitted_found
-uncommitted_found=false # Declarar sem 'local' aqui
-if [[ ${#repo_has_uncommitted_changes[@]} -gt 0 ]]; then
-    for repo_path_key in "${!repo_has_uncommitted_changes[@]}"; do
-        if [[ "${repo_has_uncommitted_changes[$repo_path_key]}" == "true" ]]; then
-            if ! $uncommitted_found; then # Usar a variável já declarada
-                 echo -e "\n${YELLOW}Repositórios com alterações locais não commitadas:${NC}"
-                 uncommitted_found=true
-            fi
-            echo -e "  - $repo_path_key"
+# Mostrar repositórios com alterações não commitadas
+uncommitted_found=false
+for i in "${!repo_paths[@]}"; do
+    if [[ "${repo_uncommitted_status[$i]}" == "true" ]]; then
+        if ! $uncommitted_found; then
+            echo -e "\n${YELLOW}Repositórios com alterações locais não commitadas:${NC}"
+            uncommitted_found=true
         fi
-    done
-fi
+        echo -e "  - ${repo_paths[$i]}"
+    fi
+done
 
 if [[ ${#pull_candidates[@]} -gt 0 ]]; then
     echo -e "\n${YELLOW}Branches que precisam de PULL:${NC}"
