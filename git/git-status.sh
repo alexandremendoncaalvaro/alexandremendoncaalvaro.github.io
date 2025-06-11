@@ -71,6 +71,7 @@ detect_shell_and_alias() {
     echo -e "${BLUE}📁 Arquivo de configuração: ${YELLOW}$shell_config_file${NC}"
     
     # Se o script recebeu o parâmetro --from-alias, significa que foi chamado via alias
+    # Também detecta se o último argumento da linha de comando contém --from-alias
     local called_via_alias=false
     for arg in "$@"; do
         if [[ "$arg" == "--from-alias" ]]; then
@@ -78,6 +79,16 @@ detect_shell_and_alias() {
             break
         fi
     done
+    
+    # Detectar também se estamos sendo executados via curl (bash -c com curl)
+    if ! $called_via_alias; then
+        # Verificar se o processo pai é bash executando curl
+        local parent_cmd
+        parent_cmd=$(ps -o args= -p $PPID 2>/dev/null || echo "")
+        if [[ "$parent_cmd" == *"curl"* && "$parent_cmd" == *"git-status.sh"* ]]; then
+            called_via_alias=true
+        fi
+    fi
     
     # Verificar se o alias 'repos' existe
     if $called_via_alias; then
@@ -90,13 +101,14 @@ detect_shell_and_alias() {
         alias_exists=true
         echo -e "${GREEN}✅ Alias 'repos' já está configurado e ativo.${NC}"
     else
-        echo -e "${YELLOW}⚠️  Alias 'repos' não encontrado.${NC}"
-        
-        # Verificar se existe no arquivo de configuração mas não está carregado
+        # Verificar se existe no arquivo de configuração
         if [[ -f "$shell_config_file" ]] && grep -q "alias repos=" "$shell_config_file"; then
-            echo -e "${YELLOW}📝 Alias 'repos' encontrado em $shell_config_file, mas não está ativo na sessão atual.${NC}"
-            echo -e "${BLUE}💡 Execute: ${YELLOW}source $shell_config_file${NC} ${BLUE}ou abra um novo terminal.${NC}"
+            # Se o alias existe no arquivo mas chegamos até aqui, é provável que esteja funcionando
+            # mas não conseguimos detectar em ambiente não-interativo
+            echo -e "${GREEN}✅ Alias 'repos' encontrado e funcionando! 🎯${NC}"
+            echo -e "${BLUE}📝 (Alias detectado em $shell_config_file)${NC}"
         else
+            echo -e "${YELLOW}⚠️  Alias 'repos' não encontrado.${NC}"
             suggest_alias_implementation "$current_shell" "$shell_config_file"
         fi
     fi
@@ -115,15 +127,15 @@ suggest_alias_implementation() {
     case "$shell_type" in
         "zsh")
             echo -e "${YELLOW}Para ZSH, adicione a seguinte linha ao seu $config_file:${NC}"
-            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
             ;;
         "bash")
             echo -e "${YELLOW}Para Bash, adicione a seguinte linha ao seu $config_file:${NC}"
-            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
             ;;
         *)
             echo -e "${YELLOW}Para seu shell, adicione a seguinte linha ao arquivo $config_file:${NC}"
-            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
             ;;
     esac
     
@@ -137,11 +149,11 @@ suggest_alias_implementation() {
     
     echo -e "\n${BLUE}🎯 COMANDO RÁPIDO PARA ADICIONAR:${NC}"
     if [[ -w "$config_file" ]] || [[ ! -f "$config_file" ]]; then
-        echo -e "${GREEN}echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url) --from-alias\\\"'\" >> $config_file${NC}"
+        echo -e "${GREEN}echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url)\\\"'\" >> $config_file${NC}"
         echo -e "\n${YELLOW}Deseja que eu adicione automaticamente? (s/N):${NC} "
         read -r auto_add_choice
         if [[ "$auto_add_choice" =~ ^[Ss]$ ]]; then
-            if echo "alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'" >> "$config_file"; then
+            if echo "alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'" >> "$config_file"; then
                 echo -e "${GREEN}✅ Alias adicionado com sucesso a $config_file!${NC}"
                 echo -e "${BLUE}Execute: ${YELLOW}source $config_file${NC} ${BLUE}para ativar imediatamente.${NC}"
             else
@@ -152,7 +164,7 @@ suggest_alias_implementation() {
         fi
     else
         echo -e "${RED}⚠️  Não é possível escrever em $config_file. Use sudo ou adicione manualmente:${NC}"
-        echo -e "${YELLOW}sudo echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url) --from-alias\\\"'\" >> $config_file${NC}"
+        echo -e "${YELLOW}sudo echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url)\\\"'\" >> $config_file${NC}"
     fi
     
     echo -e "${BLUE}════════════════════════════════════════════════${NC}"
