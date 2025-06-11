@@ -4,6 +4,136 @@
 # set -e # Descomente para sair imediatamente em caso de erro (pode precisar de ajustes no tratamento de erro)
 set -o pipefail # Falha o pipeline se algum comando intermediário falhar
 
+# --- DETECTAR SHELL E VERIFICAR ALIAS ---
+detect_shell_and_alias() {
+    local current_shell
+    local shell_config_file
+    local alias_exists=false
+    
+    # Detectar o shell do usuário (não o shell do script)
+    # Primeiro, tentar detectar pela variável de ambiente SHELL
+    local user_shell
+    user_shell=$(basename "${SHELL:-}")
+    
+    # Verificar também pelo processo pai se SHELL não estiver disponível
+    if [[ -z "$user_shell" ]]; then
+        user_shell=$(ps -p $PPID -o comm= 2>/dev/null | sed 's/^-//')
+    fi
+    
+    # Detectar baseado no shell do usuário
+    case "$user_shell" in
+        *zsh*)
+            current_shell="zsh"
+            shell_config_file="$HOME/.zshrc"
+            ;;
+        *bash*)
+            current_shell="bash"
+            # Verificar arquivos de configuração do bash em ordem de preferência
+            if [[ -f "$HOME/.bashrc" ]]; then
+                shell_config_file="$HOME/.bashrc"
+            elif [[ -f "$HOME/.bash_profile" ]]; then
+                shell_config_file="$HOME/.bash_profile"
+            elif [[ -f "$HOME/.profile" ]]; then
+                shell_config_file="$HOME/.profile"
+            else
+                shell_config_file="$HOME/.bashrc"  # padrão
+            fi
+            ;;
+        *fish*)
+            current_shell="fish"
+            shell_config_file="$HOME/.config/fish/config.fish"
+            ;;
+        *)
+            # Fallback: tentar detectar pelas variáveis de ambiente do shell em execução
+            if [[ -n "$ZSH_VERSION" ]]; then
+                current_shell="zsh"
+                shell_config_file="$HOME/.zshrc"
+            elif [[ -n "$BASH_VERSION" ]]; then
+                current_shell="bash"
+                shell_config_file="$HOME/.bashrc"
+            else
+                current_shell="unknown ($user_shell)"
+                shell_config_file="$HOME/.profile"
+            fi
+            ;;
+    esac
+    
+    echo -e "${BLUE}🔍 Shell detectado: ${YELLOW}$current_shell${NC}"
+    echo -e "${BLUE}📁 Arquivo de configuração: ${YELLOW}$shell_config_file${NC}"
+    
+    # Verificar se o alias 'repos' existe
+    if command -v repos >/dev/null 2>&1 || alias repos >/dev/null 2>&1; then
+        alias_exists=true
+        echo -e "${GREEN}✅ Alias 'repos' já está configurado e ativo.${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Alias 'repos' não encontrado.${NC}"
+        
+        # Verificar se existe no arquivo de configuração mas não está carregado
+        if [[ -f "$shell_config_file" ]] && grep -q "alias repos=" "$shell_config_file"; then
+            echo -e "${YELLOW}📝 Alias 'repos' encontrado em $shell_config_file, mas não está ativo na sessão atual.${NC}"
+            echo -e "${BLUE}💡 Execute: ${YELLOW}source $shell_config_file${NC} ${BLUE}ou abra um novo terminal.${NC}"
+        else
+            suggest_alias_implementation "$current_shell" "$shell_config_file"
+        fi
+    fi
+    
+    return 0
+}
+
+suggest_alias_implementation() {
+    local shell_type="$1"
+    local config_file="$2"
+    local script_url="https://alexandrealvaro.com.br/git/git-status.sh"
+    
+    echo -e "\n${BLUE}🛠️  SUGESTÃO DE IMPLEMENTAÇÃO DO ALIAS 'repos':${NC}"
+    echo -e "${BLUE}════════════════════════════════════════════════${NC}"
+    
+    case "$shell_type" in
+        "zsh")
+            echo -e "${YELLOW}Para ZSH, adicione a seguinte linha ao seu $config_file:${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
+            ;;
+        "bash")
+            echo -e "${YELLOW}Para Bash, adicione a seguinte linha ao seu $config_file:${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
+            ;;
+        *)
+            echo -e "${YELLOW}Para seu shell, adicione a seguinte linha ao arquivo $config_file:${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
+            ;;
+    esac
+    
+    echo -e "\n${BLUE}📋 PASSOS PARA IMPLEMENTAR:${NC}"
+    echo -e "1. ${YELLOW}Abra o arquivo de configuração:${NC}"
+    echo -e "   ${BLUE}nano $config_file${NC} ${YELLOW}ou${NC} ${BLUE}vim $config_file${NC}"
+    echo -e "\n2. ${YELLOW}Adicione a linha do alias no final do arquivo${NC}"
+    echo -e "\n3. ${YELLOW}Recarregue a configuração:${NC}"
+    echo -e "   ${BLUE}source $config_file${NC}"
+    echo -e "\n4. ${YELLOW}Ou simplesmente abra um novo terminal${NC}"
+    
+    echo -e "\n${BLUE}🎯 COMANDO RÁPIDO PARA ADICIONAR:${NC}"
+    if [[ -w "$config_file" ]] || [[ ! -f "$config_file" ]]; then
+        echo -e "${GREEN}echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url)\\\"'\" >> $config_file${NC}"
+        echo -e "\n${YELLOW}Deseja que eu adicione automaticamente? (s/N):${NC} "
+        read -r auto_add_choice
+        if [[ "$auto_add_choice" =~ ^[Ss]$ ]]; then
+            if echo "alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'" >> "$config_file"; then
+                echo -e "${GREEN}✅ Alias adicionado com sucesso a $config_file!${NC}"
+                echo -e "${BLUE}Execute: ${YELLOW}source $config_file${NC} ${BLUE}para ativar imediatamente.${NC}"
+            else
+                echo -e "${RED}❌ Erro ao adicionar alias. Verifique as permissões de $config_file${NC}"
+            fi
+        else
+            echo -e "${BLUE}Você pode copiar e colar o comando acima para adicionar manualmente.${NC}"
+        fi
+    else
+        echo -e "${RED}⚠️  Não é possível escrever em $config_file. Use sudo ou adicione manualmente:${NC}"
+        echo -e "${YELLOW}sudo echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url)\\\"'\" >> $config_file${NC}"
+    fi
+    
+    echo -e "${BLUE}════════════════════════════════════════════════${NC}"
+}
+
 # Cores para output (se o terminal suportar)
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -461,6 +591,15 @@ process_prune_item() {
 echo -e "${BLUE}===============================================${NC}"
 echo -e "${BLUE}   Verificador de Status de Repositórios Git   ${NC}"
 echo -e "${BLUE}===============================================${NC}"
+
+# Detectar shell e verificar alias antes de prosseguir (pode ser desabilitado com --skip-alias-check)
+if [[ "$1" != "--skip-alias-check" ]]; then
+    detect_shell_and_alias
+    echo -e "\n${BLUE}🔍 Iniciando verificação dos repositórios...${NC}"
+else
+    echo -e "\n${YELLOW}⚠️  Verificação de alias pulada (--skip-alias-check)${NC}"
+    echo -e "${BLUE}🔍 Iniciando verificação dos repositórios...${NC}"
+fi
 
 declare -A processed_repo_roots
 
