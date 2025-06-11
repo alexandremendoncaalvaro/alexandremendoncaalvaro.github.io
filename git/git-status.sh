@@ -70,8 +70,23 @@ detect_shell_and_alias() {
     echo -e "${BLUE}🔍 Shell detectado: ${YELLOW}$current_shell${NC}"
     echo -e "${BLUE}📁 Arquivo de configuração: ${YELLOW}$shell_config_file${NC}"
     
+    # Se o script recebeu o parâmetro --from-alias, significa que foi chamado via alias
+    local called_via_alias=false
+    for arg in "$@"; do
+        if [[ "$arg" == "--from-alias" ]]; then
+            called_via_alias=true
+            break
+        fi
+    done
+    
     # Verificar se o alias 'repos' existe
-    if command -v repos >/dev/null 2>&1 || alias repos >/dev/null 2>&1; then
+    if $called_via_alias; then
+        alias_exists=true
+        echo -e "${GREEN}✅ Alias 'repos' está funcionando corretamente! ✨${NC}"
+    elif command -v repos >/dev/null 2>&1; then
+        alias_exists=true
+        echo -e "${GREEN}✅ Comando 'repos' encontrado e ativo.${NC}"
+    elif type repos >/dev/null 2>&1 || alias repos >/dev/null 2>&1; then
         alias_exists=true
         echo -e "${GREEN}✅ Alias 'repos' já está configurado e ativo.${NC}"
     else
@@ -100,15 +115,15 @@ suggest_alias_implementation() {
     case "$shell_type" in
         "zsh")
             echo -e "${YELLOW}Para ZSH, adicione a seguinte linha ao seu $config_file:${NC}"
-            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'${NC}"
             ;;
         "bash")
             echo -e "${YELLOW}Para Bash, adicione a seguinte linha ao seu $config_file:${NC}"
-            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'${NC}"
             ;;
         *)
             echo -e "${YELLOW}Para seu shell, adicione a seguinte linha ao arquivo $config_file:${NC}"
-            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'${NC}"
+            echo -e "${GREEN}alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'${NC}"
             ;;
     esac
     
@@ -122,11 +137,11 @@ suggest_alias_implementation() {
     
     echo -e "\n${BLUE}🎯 COMANDO RÁPIDO PARA ADICIONAR:${NC}"
     if [[ -w "$config_file" ]] || [[ ! -f "$config_file" ]]; then
-        echo -e "${GREEN}echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url)\\\"'\" >> $config_file${NC}"
+        echo -e "${GREEN}echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url) --from-alias\\\"'\" >> $config_file${NC}"
         echo -e "\n${YELLOW}Deseja que eu adicione automaticamente? (s/N):${NC} "
         read -r auto_add_choice
         if [[ "$auto_add_choice" =~ ^[Ss]$ ]]; then
-            if echo "alias repos='/bin/bash -c \"\$(curl -fsSL $script_url)\"'" >> "$config_file"; then
+            if echo "alias repos='/bin/bash -c \"\$(curl -fsSL $script_url) --from-alias\"'" >> "$config_file"; then
                 echo -e "${GREEN}✅ Alias adicionado com sucesso a $config_file!${NC}"
                 echo -e "${BLUE}Execute: ${YELLOW}source $config_file${NC} ${BLUE}para ativar imediatamente.${NC}"
             else
@@ -137,7 +152,7 @@ suggest_alias_implementation() {
         fi
     else
         echo -e "${RED}⚠️  Não é possível escrever em $config_file. Use sudo ou adicione manualmente:${NC}"
-        echo -e "${YELLOW}sudo echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url)\\\"'\" >> $config_file${NC}"
+        echo -e "${YELLOW}sudo echo \"alias repos='/bin/bash -c \\\"\\\$(curl -fsSL $script_url) --from-alias\\\"'\" >> $config_file${NC}"
     fi
     
     echo -e "${BLUE}════════════════════════════════════════════════${NC}"
@@ -664,7 +679,7 @@ echo -e "${BLUE}===============================================${NC}"
 
 # Detectar shell e verificar alias antes de prosseguir (pode ser desabilitado com --skip-alias-check)
 if [[ "$1" != "--skip-alias-check" ]]; then
-    detect_shell_and_alias
+    detect_shell_and_alias "$@"
     echo -e "\n${BLUE}🔍 Iniciando verificação dos repositórios...${NC}"
 else
     echo -e "\n${YELLOW}⚠️  Verificação de alias pulada (--skip-alias-check)${NC}"
