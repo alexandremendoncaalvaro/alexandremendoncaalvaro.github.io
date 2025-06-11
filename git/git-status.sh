@@ -4,6 +4,12 @@
 # set -e # Descomente para sair imediatamente em caso de erro (pode precisar de ajustes no tratamento de erro)
 set -o pipefail # Falha o pipeline se algum comando intermediário falhar
 
+# Verificar versão mínima do bash (para compatibilidade macOS/Linux)
+if [[ ${BASH_VERSION%%.*} -lt 4 ]]; then
+    echo "⚠️  Este script requer Bash 4.0 ou superior. Versão atual: $BASH_VERSION"
+    echo "💡 No macOS, instale uma versão mais recente: brew install bash"
+fi
+
 # --- DETECTAR SHELL E VERIFICAR ALIAS ---
 detect_shell_and_alias() {
     local current_shell
@@ -17,7 +23,14 @@ detect_shell_and_alias() {
     
     # Verificar também pelo processo pai se SHELL não estiver disponível
     if [[ -z "$user_shell" ]]; then
-        user_shell=$(ps -p $PPID -o comm= 2>/dev/null | sed 's/^-//')
+        # Para compatibilidade macOS/Linux: usar formato mais portável do ps
+        if command -v ps >/dev/null 2>&1; then
+            user_shell=$(ps -p $PPID -o comm= 2>/dev/null | sed 's/^-//' || echo "")
+        fi
+        # Fallback adicional
+        if [[ -z "$user_shell" && -n "$0" ]]; then
+            user_shell=$(basename "$0")
+        fi
     fi
     
     # Detectar baseado no shell do usuário
@@ -219,7 +232,8 @@ check_repo() {
 
         local counts ahead behind
         # shellcheck disable=SC2086 
-        counts=$(git rev-list --left-right --count "$local_branch...$upstream_branch" 2>/dev/null)
+        # Compatibilidade macOS/Linux: usar comando mais robusto
+        counts=$(git rev-list --left-right --count "$local_branch...$upstream_branch" 2>/dev/null || echo "0	0")
         
         if [[ $? -ne 0 ]]; then
              # Esta condição agora é menos provável de ser a primeira a falhar se o upstream sumiu,
@@ -604,13 +618,14 @@ fi
 declare -A processed_repo_roots
 
 # Usar substituição de processo para o loop while
+# Compatibilidade macOS/Linux: usar find com sintaxe mais portável
 while IFS= read -r -d $'\0' git_dir_found; do
     repo_root_candidate=$(get_repo_root "$(dirname "$git_dir_found")")
     if [[ -n "$repo_root_candidate" && -z "${processed_repo_roots["$repo_root_candidate"]}" ]]; then
         check_repo "$repo_root_candidate"
         processed_repo_roots["$repo_root_candidate"]=1 
     fi
-done < <(find . -type d -name ".git" -print0)
+done < <(find . -type d -name ".git" -print0 2>/dev/null)
 
 
 if [[ ${#processed_repo_roots[@]} -eq 0 ]]; then
