@@ -82,14 +82,12 @@ const languageDictionary = {
       "Creative; Team Worker; Focused; Communicative; Proactive; Study enthusiast; Fast learner; Self-taught; Good listener and with Natural Leadership.",
     "about-lecture": "looking for a lecture?",
     "resume-workexperience": "Work Experience",
-    "resume-hbsisrole": "Software Architect/ Tech Lead",
+    "resume-hbsisrole": "Tech Lead / Researcher",
     "resume-hbsisdate": "Jun 2016 - Present",
-    "resume-hbsis": `Now: Software Architect/ Tech Lead<br>
-                        SODA Vision Team's Tech Lead. 
+    "resume-hbsis": `SODA Vision Team's Tech Lead. 
                         Responsible for designing solution architecture and developing prototypes and proofs of concept, focusing on IoT,
                         Industrial IoT, OT IT Convergence, Artificial Intelligence, and Computer Vision.
-                        <br><br>Before: Researcher/ Tech Lead<br>
-                        Beegeye Team's Tech Lead. 
+                        <br><br>
                         Researcher at Beer Garage, the R&D + Innovation department of AB-Inbev. Especialized in
                         Internet of Things and Industrial Automation.
                         Applied research with prototyping and Proof of Concept (PoC).
@@ -112,7 +110,7 @@ const languageDictionary = {
                         Mainly for Bosch Rexroth (outsourcing). But we had important projects with Lavrita Engenharia, Sulser (Frio Brasil),
                         and others significant players too.`,
     "resume-mayekawarole": "Industrial Automation Software Developer",
-    "resume-date": "Apr 2007 – May 2009",
+    "resume-mayekawadate": "Apr 2007 – May 2009",
     "resume-mayekawa":
       "Automation software engineering, PLC, HMI, and SCADA supervisory development.",
     "resume-colorrole": "Graphic designer & Sales customer service",
@@ -289,14 +287,11 @@ const languageDictionary = {
       "Criativo; Trabalha em time; Focado; Comunicativo; Proativo; Entusiasta de estudo; Aprende rápido; Independente; Bom ouvinte e Líder nato.",
     "about-lecture": "procurando palestra?",
     "resume-workexperience": "Experiência",
-    "resume-hbsisrole": "Pesquisador",
+    "resume-hbsisrole": "Tech Lead / Pesquisador",
     "resume-hbsisdate": "Jun 2016 - Presente",
     "resume-hbsis": `Responsável técnico do time SODA Vision. 
                         Arquitetura de soluções e engenharia de protótipos e provas de conceito, com foco em IoT, Industrial IoT, Convergência OT IT, Inteligência Artificial e Visão Computacional. 
-                        Mapeamento de necessidades de automação.
-                        <br />
-                        ---
-                        <br />
+                        <br><br>
                         Pesquisador no Beer Garage, o departamento de P&D da Ab-Inbev. Especializado em Internet das Coisas e Automação Industrial.
                         Pesquisa Aplicada com prototipação e Provas de Conceito (PoC).
                         Difusão da Inovação e suporte ao Intraempreendedorismo através de programas para toda a companhia.`,
