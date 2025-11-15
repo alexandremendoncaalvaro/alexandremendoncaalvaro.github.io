@@ -178,7 +178,8 @@ const languageDictionary = {
     "portfolio-subtitle": "Illustration, Animation, and 3D",
     "portfolio-message": `Those ones are freelance or just for fun.<br>
                                 <small>I can't publish a lot of work because of the image rights.</small>`,
-	"portfolio-ambev-collab": "Collaboration for Ambev Tech's<br>recruitment campaign",
+    "portfolio-ambev-collab":
+      "Collaboration for Ambev Tech's<br>recruitment campaign",
     "music-subtitle": "Composition",
     "music-message":
       "Play guitar, sing, write songs, make the arrangement and mix tracks in Garage Band is a big passion!",
@@ -369,7 +370,8 @@ const languageDictionary = {
     "portfolio-subtitle": "Ilustração, Animação, e 3D",
     "portfolio-message": `Artes para trabalho freelance ou apenas por diversão.<br>
                                 <small>Eu não publiquei diversas artes aqui, pois foram adquiridas com direito de imagem.</small>`,
-	"portfolio-ambev-collab": "Colaboração na campanha de recrutamento<br>da Ambev Tech",
+    "portfolio-ambev-collab":
+      "Colaboração na campanha de recrutamento<br>da Ambev Tech",
     "music-subtitle": "Composição própria",
     "music-message":
       "Tocar violão, cantar, compor, fazer o arranjo e mixar as trilhas no Garage Band é uma das minhas grandes paixões!",
