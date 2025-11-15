@@ -302,7 +302,7 @@ const languageDictionary = {
                         Principalmente para Bosch Rexroth (outsourcing). Mas também tivemos grande projetos com a Lavrita
                         Engenharia para Infraero, com a Sulser Frio Brasil para Itaú, Colgate-Palmolive, e outras empresas bastante relevantes.`,
     "resume-mayekawarole": "Desenvolvedor (Automação Industrial)",
-    "resume-date": "Abr 2007 – Mai 2009",
+    "resume-mayekawadate": "Abr 2007 – Mai 2009",
     "resume-mayekawa":
       "Engenharia de softwares de automação, CLP, IHM, e supervisórios SCADA.",
     "resume-colorrole": "Design Gráfico & Serviço de venda ao consumidor",
