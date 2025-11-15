@@ -21,7 +21,7 @@ const languageDictionary = {
     "intro-areas-4": "Innovation",
     "intro-areas-5": "Podcast",
     "intro-comment":
-      "here you will find my references for a lecture or freelancing",
+      "Here you will find my professional portfolio and personal projects.",
     "intro-more": "More About Me",
     "intro-podcast": "Ambev Tech Talk last Episode:",
     "about-intro-title": "Let me introduce myself.",
@@ -33,18 +33,12 @@ const languageDictionary = {
                         <br>In my career, I have been able to learn a lot about electrics, electronics, hydraulics, pneumatics,
                         software development, and equipment commissioning.`,
     "about-profile-title": "PROFILE",
-    "about-profile": `I’m here for innovation, tech & beer!<br>I´m very proud to be working for <a
-                        href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a>, an
-                        <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a> company. I work as a technology researcher at the R&D department.<br>
-                        I'm a co-host of the <a href="https://open.spotify.com/show/07cPNODgBHWh2JMkHbZxXG" target="_blank">Ambev Tech podcast</a> too!<br>
-                        I´m really excited about things that mix art with technology, like Motion Graphics, SVG animations,
-                        creating music with my guitar and GarageBand, development of computer vision algorithms, and more.`,
+    "about-profile": `I am passionate about mixing technology and art disciplines, such as Motion Graphics, SVG animations, creating music with my guitar and GarageBand, developing computer vision algorithms, and more.<br><br>Professionally, I work at <a href='https://www.ambevtech.com.br' target='_blank'>Ambev Tech</a>, an <a href='https://www.ab-inbev.com' target='_blank'>AB-Inbev</a> company, researching and applying new technologies to solve complex challenges. I was also a co-host on the <a href='https://open.spotify.com/show/07cPNODgBHWh2JMkHbZxXG' target='_blank'>Ambev Tech podcast</a>.`,
     "about-fullname-title": "FULLNAME",
     "about-birthdate-title": "BIRTH DATE",
     "about-birthdate": "January 2, 1985",
     "about-job-title": "Job",
-    "about-job": `Researcher at <a href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a><br>in Internet of Things <br>
-                        and Industrial Automation`,
+    "about-job": `Tech Lead/ Applied Research (Ambev Tech)`,
     "about-company-websites": "Company Websites",
     "about-hbsis-publication":
       "Ambev Tech Publication on Linkedin (in Brazillian Portuguese)",
@@ -184,6 +178,7 @@ const languageDictionary = {
     "portfolio-subtitle": "Illustration, Animation, and 3D",
     "portfolio-message": `Those ones are freelance or just for fun.<br>
                                 <small>I can't publish a lot of work because of the image rights.</small>`,
+	"portfolio-ambev-collab": "Collaboration for Ambev Tech's<br>recruitment campaign",
     "music-subtitle": "Composition",
     "music-message":
       "Play guitar, sing, write songs, make the arrangement and mix tracks in Garage Band is a big passion!",
@@ -198,7 +193,7 @@ const languageDictionary = {
     "stats-libras": "Basic-Intermediate<br>Sign Language (LIBRAS)",
     "contact-subtitle": "I'd Love To Hear From You.",
     "contact-message":
-      "Would you like to invite me to do a lecture or<br>hire me for a freelance illustration, animation,<br>3D modeling, technical consulting?",
+      "I'm always open to connecting with new people and exchanging ideas about technology and innovation. Feel free to reach out!",
     "contact-where": "Where to find me",
     "contact-business": "business hours:",
     "contact-personal": "personal:",
@@ -226,7 +221,7 @@ const languageDictionary = {
     "intro-areas-4": "Inovação",
     "intro-areas-5": "Podcast",
     "intro-comment":
-      "aqui você vai encontrar referências minhas para uma palestra ou freelance",
+      "Aqui você encontrará meu portfólio profissional e projetos pessoais.",
     "intro-more": "Mais sobre mim",
     "intro-podcast": "Último episódio do Ambev Tech Talk:",
     "about-intro-title": "Deixa eu me apresentar.",
@@ -238,18 +233,12 @@ const languageDictionary = {
                         <br>Durante minha carreira pude aprender bastante sobre elétrica, eletrônica, hidraulica, pneumatica,
                         desenvolvimento de software, comissionamento e startup de equipamentos industriais.`,
     "about-profile-title": "PERFIL",
-    "about-profile": `<i>I’m here for innovation, tech & beer!</i><br>Tenho muito orgulho de trabalhar na <a
-                        href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a> a quase 10 anos, empresa do grupo
-                        <a href="https://www.ab-inbev.com" target="_blank">AB-Inbev</a>. A alguns anos atuo como responsável técnico por um produto chamado SODA Vision, que está na vanguarda da tecnologia utilizando visão computacional com inteligência artificial pra resolver problemas diversos. E também atuei como pesquisador de tecnologia e inovação no departamento de P&D da empresa.<br>
-                        Por muitos anos fui co-host no <a href="https://open.spotify.com/show/07cPNODgBHWh2JMkHbZxXG" target="_blank">podcast Ambev Tech</a>!<br>
-                        Sou apaixonado por misturar disciplinas de tecnologia e arte, como Motion Graphics, animações SVG,
-                        criação de música com meu violão e o GarageBand, desenvolvimento de algoritmos de visão computacional, entre outros.`,
+    "about-profile": `Sou apaixonado por misturar disciplinas de tecnologia e arte, como Motion Graphics, animações SVG, criação de música com meu violão e o GarageBand, desenvolvimento de algoritmos de visão computacional, entre outros.<br><br>Profissionalmente, atuo na <a href='https://www.ambevtech.com.br' target='_blank'>Ambev Tech</a>, uma empresa do grupo <a href='https://www.ab-inbev.com' target='_blank'>AB-Inbev</a>, onde pesquiso e aplico novas tecnologias para solucionar desafios complexos. Também fui co-host no <a href='https://open.spotify.com/show/07cPNODgBHWh2JMkHbZxXG' target='_blank'>podcast Ambev Tech</a>.`,
     "about-fullname-title": "NOME",
     "about-birthdate-title": "NASCIMENTO",
     "about-birthdate": "2 de janeiro de 1985",
     "about-job-title": "Profissão",
-    "about-job": `Pesquisador na <a href="https://www.ambevtech.com.br" target="_blank">Ambev Tech</a><br>em Internet das Coisas <br>
-                        e Automação Industrial`,
+    "about-job": `Tech Lead/ Pesquisa Aplicada (Ambev Tech)`,
     "about-company-websites": "Sites da Companhia",
     "about-hbsis-publication": "Publicação da Ambev Tech no Linkedin",
     "about-skills": "Conhecimentos em destaque",
@@ -380,6 +369,7 @@ const languageDictionary = {
     "portfolio-subtitle": "Ilustração, Animação, e 3D",
     "portfolio-message": `Artes para trabalho freelance ou apenas por diversão.<br>
                                 <small>Eu não publiquei diversas artes aqui, pois foram adquiridas com direito de imagem.</small>`,
+	"portfolio-ambev-collab": "Colaboração na campanha de recrutamento<br>da Ambev Tech",
     "music-subtitle": "Composição própria",
     "music-message":
       "Tocar violão, cantar, compor, fazer o arranjo e mixar as trilhas no Garage Band é uma das minhas grandes paixões!",
@@ -391,9 +381,9 @@ const languageDictionary = {
     "stats-english": "Intermediário-Avançado<br>Inglês",
     "stats-spanish": "Intermediário<br>Espanhol",
     "stats-libras": "Básico-Intermediário<br>LIBRAS",
-    "contact-subtitle": "Adoraria ouvir de você",
+    "contact-subtitle": "Conecte-se Comigo",
     "contact-message":
-      "Gostaria de me convidar para fazer uma palestra<br>me contratar para um freelance de ilustração, animação,<br>3D, consultoria técnica?",
+      "Estou sempre aberto a me conectar com novas pessoas e trocar ideias sobre tecnologia e inovação. Sinta-se à vontade para entrar em contato!",
     "contact-where": "Onde me encontrar",
     "contact-business": "horário comercial:",
     "contact-personal": "pessoal:",
