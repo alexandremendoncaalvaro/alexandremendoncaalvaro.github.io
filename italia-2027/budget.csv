@@ -1,0 +1,22 @@
+key;label;value;currency;group;enabled;buffer;unit;source
+travelers;Viajantes;4;COUNT;trip;true;0;pessoa;Plano confirmado
+couples;Casais para rateio;2;COUNT;trip;true;0;casal;Plano confirmado
+rooms;Quartos duplos;2;COUNT;trip;true;0;quarto;Plano confirmado
+nights;Noites na Itália;19;COUNT;trip;true;0;noite;Datas confirmadas
+flights;Passagens aéreas;21309.64;BRL;fixed;true;0;grupo;Imagem LATAM
+seats;Assentos;3328.76;BRL;fixed;true;0;grupo;Imagem LATAM
+pid;PID para dois motoristas;212.52;BRL;fixed;true;0;grupo;Detran-SC 2026
+latamInsurance;LATAM 150;2746.18;BRL;insurance;false;0;grupo;Imagem LATAM
+prudentInsurance;Reserva prudente de seguro;4800;BRL;insurance;true;0;grupo;Envelope de planejamento
+seniorInsurance;Reserva reforçada de seguro;6500;BRL;insurance;false;0;grupo;Envelope de planejamento
+fx;Euro orçamentário;6.50;BRL;model;true;0;EUR;Premissa prudente
+contingency;Contingência geral;12;PERCENT;model;true;0;terrestre;Premissa prudente
+foodDay;Alimentação;75;EUR;food;true;18;pessoa/dia;Modelo prudente
+carDay;Locação do carro;114;EUR;car;true;25;dia;Amostras atuais
+roadKm;Combustível e pedágios;0.20;EUR;road;true;20;km;Modelo de rota
+parkingDay;Estacionamento;20;EUR;road;true;20;dia de carro;Modelo de rota
+roadFixed;Reserva fixa de estrada;45;EUR;road;true;20;grupo;Modelo de rota
+transport;Aeroportos trem e transporte urbano;580;EUR;transport;true;15;grupo;Tarifas e modelo atuais
+ticketReserve;Reserva adicional de ingressos;170;EUR;tickets;true;20;grupo;Modelo prudente
+misc;Comunicação lavanderia e pequenos gastos;300;EUR;misc;true;15;grupo;Reserva operacional
+etias;Reserva máxima ETIAS;20;EUR;etias;true;0;pessoa;União Europeia
